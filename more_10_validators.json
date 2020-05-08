@@ -17,16 +17,16 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 10,
-  "iteration": 1588800971078,
+  "id": 2,
+  "iteration": 1588931445737,
   "links": [],
   "panels": [
     {
-      "content": "\n## Presentation\n---------------\nWelcome to my dashboard!\n\nIf you face any issue to understand a panel or to know what to do, make sure to read the small note on the corner top left of the panel if there is one!\n\n\n\n### Bug!\n---------------\n\nIf you find a bug, please report it to me on discord, Ocaa/grums. I'm foundable on the prysm discord then dm me directly. I'll try to give a fix and update the dashboard on the gist!\nThanks for all the reports\n\n\n\n\n-------------\nAfter reading it, you can now delete me :)\n\nEnjoy\n\n\n\n",
+      "content": "\n## Presentation\n---------------\nWelcome to my dashboard!\n\nIf you face any issue to understand a panel or to know what to do, make sure to read the small note on the corner top left of the panel if there is one!\n\n\n\n### Bug!\n---------------\n\nIf you find a bug, please report it to me on discord, Ocaa/grums. I'm foundable on the prysm discord then dm me directly. I'll try to give a fix and update the dashboard on the gist!\nThanks for all the reports\n\n\n\n\n-------------\nAfter reading it, you can now delete me. And don't forget to save the dashboard after deleting me! (button on the upper right) :)\n\nEnjoy\n\n\n\n",
       "datasource": null,
       "description": "To delete this panel: left click on the title, then chose remove",
       "gridPos": {
-        "h": 10,
+        "h": 11,
         "w": 24,
         "x": 0,
         "y": 0
@@ -60,7 +60,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 11
       },
       "id": 42,
       "interval": null,
@@ -133,7 +133,7 @@
       ],
       "datasource": null,
       "decimals": 4,
-      "description": "The hourly earning will be available once your first validator activated is at least 1 hour old.",
+      "description": "The hourly earning will be available once your first validator activated is at least 1 hour old, or you started Prometheus at least 1 hour ago.",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -146,7 +146,7 @@
         "h": 2,
         "w": 4,
         "x": 0,
-        "y": 11
+        "y": 12
       },
       "hideTimeOverride": true,
       "id": 16,
@@ -222,7 +222,7 @@
       ],
       "datasource": null,
       "decimals": 4,
-      "description": "The daily earning will be available once your first validator activated is at least 1 day old.",
+      "description": "The daily earning will be available once your first validator activated is at least 1 day old, or you started Prometheus at least 1 day ago.",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -235,7 +235,7 @@
         "h": 2,
         "w": 4,
         "x": 4,
-        "y": 11
+        "y": 12
       },
       "hideTimeOverride": true,
       "id": 10,
@@ -312,7 +312,7 @@
       ],
       "datasource": null,
       "decimals": 4,
-      "description": "The weekly earning will be available once your first validator activated is at least 7 days old.",
+      "description": "The weekly earning will be available once your first validator activated is at least 7 days old, or you started Prometheus at least 7 days ago.",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -325,7 +325,7 @@
         "h": 2,
         "w": 4,
         "x": 8,
-        "y": 11
+        "y": 12
       },
       "hideTimeOverride": true,
       "id": 12,
@@ -400,7 +400,7 @@
       ],
       "datasource": null,
       "decimals": 4,
-      "description": "The monthly earning will be available once your first validator activated is at least 30 days old.",
+      "description": "The monthly earning will be available once your first validator activated is at least 30 days old, or you started Prometheus at least 30 days ago.",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -413,7 +413,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 11
+        "y": 12
       },
       "hideTimeOverride": true,
       "id": 14,
@@ -500,7 +500,7 @@
         "h": 2,
         "w": 4,
         "x": 16,
-        "y": 11
+        "y": 12
       },
       "id": 6,
       "interval": null,
@@ -588,7 +588,7 @@
         "h": 2,
         "w": 4,
         "x": 20,
-        "y": 11
+        "y": 12
       },
       "id": 54,
       "interval": null,
@@ -664,7 +664,7 @@
         "h": 10,
         "w": 10,
         "x": 0,
-        "y": 13
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 4,
@@ -750,7 +750,7 @@
         "h": 20,
         "w": 6,
         "x": 10,
-        "y": 13
+        "y": 14
       },
       "id": 22,
       "pageSize": 100,
@@ -898,7 +898,7 @@
         "h": 20,
         "w": 8,
         "x": 16,
-        "y": 13
+        "y": 14
       },
       "id": 20,
       "pageSize": null,
@@ -1138,7 +1138,7 @@
         "h": 10,
         "w": 10,
         "x": 0,
-        "y": 23
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 2,
@@ -1241,7 +1241,7 @@
         "h": 1,
         "w": 8,
         "x": 0,
-        "y": 33
+        "y": 34
       },
       "id": 59,
       "interval": null,
@@ -1325,7 +1325,7 @@
         "h": 1,
         "w": 12,
         "x": 8,
-        "y": 33
+        "y": 34
       },
       "id": 30,
       "interval": null,
@@ -1410,7 +1410,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 33
+        "y": 34
       },
       "id": 41,
       "interval": null,
@@ -1488,7 +1488,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 34
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 32,
@@ -1592,7 +1592,7 @@
         "h": 10,
         "w": 9,
         "x": 8,
-        "y": 34
+        "y": 35
       },
       "hiddenSeries": false,
       "hideTimeOverride": false,
@@ -1723,7 +1723,7 @@
         "h": 2,
         "w": 3,
         "x": 17,
-        "y": 34
+        "y": 35
       },
       "id": 56,
       "interval": null,
@@ -1794,7 +1794,7 @@
         "h": 10,
         "w": 4,
         "x": 20,
-        "y": 34
+        "y": 35
       },
       "id": 24,
       "limit": 10,
@@ -1830,7 +1830,7 @@
         "h": 2,
         "w": 3,
         "x": 17,
-        "y": 36
+        "y": 37
       },
       "id": 26,
       "interval": null,
@@ -1915,7 +1915,7 @@
         "h": 2,
         "w": 3,
         "x": 17,
-        "y": 38
+        "y": 39
       },
       "id": 34,
       "interval": null,
@@ -1984,7 +1984,7 @@
         "h": 4,
         "w": 3,
         "x": 17,
-        "y": 40
+        "y": 41
       },
       "id": 40,
       "options": {
@@ -2033,7 +2033,7 @@
         "orientation": "horizontal",
         "showUnfilled": true
       },
-      "pluginVersion": "6.7.2",
+      "pluginVersion": "6.7.3",
       "targets": [
         {
           "expr": "sum(delta(log_entries_total{job=\"$node_job\", level=\"error\"}[1h]) > 0)",
@@ -2104,7 +2104,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 44
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 61,
@@ -2243,7 +2243,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 45
+        "y": 46
       },
       "hiddenSeries": false,
       "id": 28,
@@ -2375,7 +2375,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 46
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 44,
@@ -2532,7 +2532,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 47
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 48,
@@ -2666,7 +2666,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 48
+        "y": 49
       },
       "hiddenSeries": false,
       "id": 52,
@@ -2808,7 +2808,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 49
+        "y": 50
       },
       "hiddenSeries": false,
       "id": 50,
@@ -2972,5 +2972,5 @@
   "variables": {
     "list": []
   },
-  "version": 18
+  "version": 4
 }
