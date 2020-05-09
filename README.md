@@ -55,9 +55,9 @@ So for example, let’s say you are running your validator on machine A and node
 Once the prometheus.yml file has been updated, you can run the prometheus.exe file, then open this web page http://localhost:9090/graph
 If everything is working, you will see a GUI to create your own graphs by selecting the metrics that you want to monitor. Make sure to find validator and node metrics (`validator_balance` is a validator metric and `total_voted_target_balances` is a node metric)
 
-#### Store metrics for a month (facultative)
-This is particularly useful if you plan on getting my dashboard, or if you plan to have long term charts. Basicaly, Prometheus will store all the data in a kind of database on your machine, but to prevent having a database too huge, it will remove old data, and by default this is set to 15 days. So to change that, you'll need to run Prometheus with the flag `--storage.tsdb.retention`
-For windows user the section below shows how to run Prometheus in bakground with this flag included
+#### Setting the storage time (default 15 days)
+This is particularly useful if you plan on getting my dashboard, or if you plan to have long term charts. Basicaly, Prometheus will store all the data in a kind of database on your machine, but to prevent having a database too huge, it will remove old data, and by default this is set to 15 days. So to change that, you'll need to run Prometheus with the flag `--storage.tsdb.retention`.
+For people who wants to run my dashboard, you'll need this `--storage.tsdb.retention=31d`at least. If you are using windows the section below shows how to run Prometheus in bakground with this flag included
 
 #### Prometheus running in background for Windows (facultative)
 Now that everything is working on prometheus, you might have figured that you keep having a window open for prometheus, and if you close it then you won’t have access to http://localhost:9090/graph no more. So we will see here how to run prometheus in the background.
