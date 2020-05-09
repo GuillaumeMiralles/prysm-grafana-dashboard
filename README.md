@@ -56,7 +56,7 @@ Once the prometheus.yml file has been updated, you can run the prometheus.exe fi
 If everything is working, you will see a GUI to create your own graphs by selecting the metrics that you want to monitor. Make sure to find validator and node metrics (`validator_balance` is a validator metric and `total_voted_target_balances` is a node metric)
 
 #### Setting the storage time (default 15 days)
-This is particularly useful if you plan on getting my dashboard, or if you plan to have long term charts. Basicaly, Prometheus will store all the data in a kind of database on your machine, but to prevent having a database too huge, it will remove old data, and by default this is set to 15 days. So to change that, you'll need to run Prometheus with the flag `--storage.tsdb.retention`.
+This is particularly useful if you plan on getting my dashboard, or if you plan to have long term charts. Basicaly, Prometheus will store all the data in a kind of database on your machine, but to prevent having a database too huge, it will remove old data, and by default this is set to 15 days. So to change that, you'll need to run Prometheus with the flag `--storage.tsdb.retention.time`.
 For people who wants to run my dashboard, you'll need this `--storage.tsdb.retention.time=31d`at least. If you are using windows the section below shows how to run Prometheus in bakground with this flag included
 
 #### Prometheus running in background for Windows (facultative)
