@@ -57,12 +57,12 @@ If everything is working, you will see a GUI to create your own graphs by select
 
 #### Setting the storage time (default 15 days)
 This is particularly useful if you plan on getting my dashboard, or if you plan to have long term charts. Basicaly, Prometheus will store all the data in a kind of database on your machine, but to prevent having a database too huge, it will remove old data, and by default this is set to 15 days. So to change that, you'll need to run Prometheus with the flag `--storage.tsdb.retention`.
-For people who wants to run my dashboard, you'll need this `--storage.tsdb.retention=31d`at least. If you are using windows the section below shows how to run Prometheus in bakground with this flag included
+For people who wants to run my dashboard, you'll need this `--storage.tsdb.retention.time=31d`at least. If you are using windows the section below shows how to run Prometheus in bakground with this flag included
 
 #### Prometheus running in background for Windows (facultative)
 Now that everything is working on prometheus, you might have figured that you keep having a window open for prometheus, and if you close it then you won’t have access to http://localhost:9090/graph no more. So we will see here how to run prometheus in the background.
 For that you need to open a Windows Powershell prompt, then go to the directory where is located the prometheus.exe file (using command cd) and to run this command:
-`Start-Process "prometheus.exe" "--storage.tsdb.retention=31d" -WindowStyle Hidden`
+`Start-Process "prometheus.exe" "--storage.tsdb.retention.time=31d" -WindowStyle Hidden`
 If you ever want to stop the prometheus process, you can find it under the name prometheus.exe in the windows task manager (shortcut ctrl+alt+del), then you can stop it if wanted.
 
 
