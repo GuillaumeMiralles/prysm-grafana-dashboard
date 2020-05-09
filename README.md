@@ -62,7 +62,7 @@ For windows user the section below shows how to run Prometheus in bakground with
 #### Prometheus running in background for Windows (facultative)
 Now that everything is working on prometheus, you might have figured that you keep having a window open for prometheus, and if you close it then you won’t have access to http://localhost:9090/graph no more. So we will see here how to run prometheus in the background.
 For that you need to open a Windows Powershell prompt, then go to the directory where is located the prometheus.exe file (using command cd) and to run this command:
-`Start-Process "prometheus.exe" "--storage.tsdb.retention=30d" -WindowStyle Hidden`
+`Start-Process "prometheus.exe" "--storage.tsdb.retention=31d" -WindowStyle Hidden`
 If you ever want to stop the prometheus process, you can find it under the name prometheus.exe in the windows task manager (shortcut ctrl+alt+del), then you can stop it if wanted.
 
 
