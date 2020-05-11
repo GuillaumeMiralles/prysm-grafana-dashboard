@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 2,
-  "iteration": 1588931445737,
+  "iteration": 1589219344548,
   "links": [],
   "panels": [
     {
@@ -2090,7 +2090,11 @@
         "message": "One of the two process just restarted.",
         "name": "WARN NODE/VALIDATOR: The process just restarted",
         "noDataState": "no_data",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "USY-LmRGz"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -2230,7 +2234,11 @@
         "message": "NODE ALERT: MORE THAN 50 SLOTS BEHIND THAN THE CHAIN",
         "name": "NODE: More than 50 slots behind",
         "noDataState": "no_data",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "USY-LmRGz"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -2362,7 +2370,11 @@
         "message": "NODE/VALIDATOR: THE NODE OR VALIDATOR IS DOWN FOR MORE THAN 1 MINUTE",
         "name": "NODE/VALIDATOR: Process down",
         "noDataState": "no_data",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "USY-LmRGz"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -2519,7 +2531,11 @@
         "message": "VALIDATOR ALERT: THE EARNING IN THE LAST HOUR IS LESS THAN 0",
         "name": "VALIDATOR: Hourly earning <= 0",
         "noDataState": "no_data",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "USY-LmRGz"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -2653,7 +2669,11 @@
         "message": "NODE ALERT: MORE THAN 50 ERRORS IN THE LAST HOUR",
         "name": "NODE: More than 50 errors in 1h",
         "noDataState": "no_data",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "USY-LmRGz"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -2795,7 +2815,11 @@
         "message": "VALIDATOR ALERT: YOUR VALIDATOR HAS BEEN SLASHED",
         "name": "VALIDATOR: Validator has been slashed",
         "noDataState": "no_data",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "USY-LmRGz"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -2972,5 +2996,5 @@
   "variables": {
     "list": []
   },
-  "version": 4
+  "version": 6
 }
