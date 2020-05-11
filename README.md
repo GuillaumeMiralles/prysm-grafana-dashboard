@@ -1,50 +1,11 @@
-# Guide monitoring and telegram alerts on prysm node and validator with Prometheus and Grafana
+# Guide monitoring + telegram alerts for prysm node and validator with Prometheus and Grafana
 
 ###### Written by Ocaa/Grums. Feel free to ask me if you face any issue on the prysm discord
 
 Now that you have your validator and node process running, you will probably need a nice dashboard and alert system to ensure at maximum the profitability of your staking ETH. Here is a simple guide that explain how to get one, without any developer skill.
 
 Here is the result of what you will get if you follow this guide!
-![Grafana dashboard for prysm node and validator](https://imgur.com/nbI9KPP.png "Grafana dashboard for prysm node and validator")
-
-
-## Metrics from validators and node process
-First thing you need to do, is to add the flag `--enable-account-metrics` to the end of the validator command
-
-Now you have to make sure that you have access to both metrics:
-- on the machine running the node, you will find the node metrics on http://localhost:8080/metrics
-- on the machine running the validator, you will find the validator metrics on http://localhost:8081/metrics
-
-## Prometheus
-#### Installation
-[Download Prometheus](https://prometheus.io/download/), then go to the directory where the prometheus.exe file is, and edit the prometheus.yml file to replace the content of the file by this:
-```# my global config
-global:
-  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
-  # scrape_timeout is set to the global default (10s).
-
-# Alertmanager configuration
-alerting:
-  alertmanagers:
-  - static_configs:
-    - targets:
-      # - alertmanager:9093
-
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-  # - "first_rules.yml"
-  # - "second_rules.yml"
-
-# A scrape configuration containing exactly one endpoint to scrape:
-# Here it's Prometheus itself.
-scrape_configs:
-  - job_name: 'validator'
-    static_configs:
-      - targets: ['localhost:8081']
-  - job_name: 'beacon node'
-    static_configs:
-      - targets: ['localhost:8080']
+![Grafana dashboard for prysm node and validator](https
 ```
 ##### Node and validator running in same network but different machine
 If you don’t run your validator and your node on the same machine but on the same network, you still can have access to both metrics on a single machine. This works the same way as for the flag `--beacon-rpc-provider` on the validator command.
