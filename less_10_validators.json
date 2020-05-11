@@ -26,7 +26,7 @@
       "datasource": null,
       "description": "To delete this panel: left click on the title, then chose remove",
       "gridPos": {
-        "h": 1,
+        "h": 11,
         "w": 24,
         "x": 0,
         "y": 0
@@ -60,7 +60,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 1
+        "y": 11
       },
       "id": 42,
       "interval": null,
@@ -146,7 +146,7 @@
         "h": 2,
         "w": 4,
         "x": 0,
-        "y": 2
+        "y": 12
       },
       "hideTimeOverride": true,
       "id": 16,
@@ -235,7 +235,7 @@
         "h": 2,
         "w": 4,
         "x": 4,
-        "y": 2
+        "y": 12
       },
       "hideTimeOverride": true,
       "id": 10,
@@ -325,7 +325,7 @@
         "h": 2,
         "w": 4,
         "x": 8,
-        "y": 2
+        "y": 12
       },
       "hideTimeOverride": true,
       "id": 12,
@@ -413,7 +413,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 2
+        "y": 12
       },
       "hideTimeOverride": true,
       "id": 14,
@@ -500,7 +500,7 @@
         "h": 2,
         "w": 4,
         "x": 16,
-        "y": 2
+        "y": 12
       },
       "id": 6,
       "interval": null,
@@ -588,7 +588,7 @@
         "h": 2,
         "w": 4,
         "x": 20,
-        "y": 2
+        "y": 12
       },
       "id": 54,
       "interval": null,
@@ -664,7 +664,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 4
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 4,
@@ -758,7 +758,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 4
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 2,
@@ -848,7 +848,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 4
+        "y": 14
       },
       "id": 22,
       "pageSize": 100,
@@ -996,7 +996,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 9
+        "y": 19
       },
       "id": 20,
       "pageSize": null,
@@ -1241,7 +1241,7 @@
         "h": 1,
         "w": 8,
         "x": 0,
-        "y": 14
+        "y": 24
       },
       "id": 59,
       "interval": null,
@@ -1325,7 +1325,7 @@
         "h": 1,
         "w": 12,
         "x": 8,
-        "y": 14
+        "y": 24
       },
       "id": 30,
       "interval": null,
@@ -1410,7 +1410,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 14
+        "y": 24
       },
       "id": 41,
       "interval": null,
@@ -1488,7 +1488,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 15
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 32,
@@ -1592,7 +1592,7 @@
         "h": 10,
         "w": 9,
         "x": 8,
-        "y": 15
+        "y": 25
       },
       "hiddenSeries": false,
       "hideTimeOverride": false,
@@ -1723,7 +1723,7 @@
         "h": 2,
         "w": 3,
         "x": 17,
-        "y": 15
+        "y": 25
       },
       "id": 56,
       "interval": null,
@@ -1794,7 +1794,7 @@
         "h": 10,
         "w": 4,
         "x": 20,
-        "y": 15
+        "y": 25
       },
       "id": 24,
       "limit": 10,
@@ -1830,7 +1830,7 @@
         "h": 2,
         "w": 3,
         "x": 17,
-        "y": 17
+        "y": 27
       },
       "id": 26,
       "interval": null,
@@ -1915,7 +1915,7 @@
         "h": 2,
         "w": 3,
         "x": 17,
-        "y": 19
+        "y": 29
       },
       "id": 34,
       "interval": null,
@@ -1984,7 +1984,7 @@
         "h": 4,
         "w": 3,
         "x": 17,
-        "y": 21
+        "y": 31
       },
       "id": 40,
       "options": {
@@ -2108,7 +2108,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 25
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 61,
@@ -2251,7 +2251,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 26
+        "y": 36
       },
       "hiddenSeries": false,
       "id": 28,
@@ -2387,7 +2387,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 27
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 44,
@@ -2548,7 +2548,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 28
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 48,
@@ -2686,7 +2686,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 29
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 52,
@@ -2832,7 +2832,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 30
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 50,
@@ -2996,5 +2996,5 @@
   "variables": {
     "list": []
   },
-  "version": 7
+  "version": 8
 }
