@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1589217716276,
+  "iteration": 1589228141723,
   "links": [],
   "panels": [
     {
@@ -26,7 +26,7 @@
       "datasource": null,
       "description": "To delete this panel: left click on the title, then chose remove",
       "gridPos": {
-        "h": 11,
+        "h": 1,
         "w": 24,
         "x": 0,
         "y": 0
@@ -60,7 +60,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 1
       },
       "id": 42,
       "interval": null,
@@ -146,7 +146,7 @@
         "h": 2,
         "w": 4,
         "x": 0,
-        "y": 12
+        "y": 2
       },
       "hideTimeOverride": true,
       "id": 16,
@@ -235,7 +235,7 @@
         "h": 2,
         "w": 4,
         "x": 4,
-        "y": 12
+        "y": 2
       },
       "hideTimeOverride": true,
       "id": 10,
@@ -325,7 +325,7 @@
         "h": 2,
         "w": 4,
         "x": 8,
-        "y": 12
+        "y": 2
       },
       "hideTimeOverride": true,
       "id": 12,
@@ -400,7 +400,7 @@
       ],
       "datasource": null,
       "decimals": 4,
-      "description": "The monthly earning will be available once your first validator activated is at least 30 days old, or you started Prometheus at least 30 days ago.\n\nAlso make sure you run prometheus with the flag --storage.tsdb.retention=31d",
+      "description": "The monthly earning will be available once your first validator activated is at least 30 days old, or you started Prometheus at least 30 days ago.\n\nAlso make sure you run prometheus with the flag --storage.tsdb.retention.time=31d",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -413,7 +413,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 12
+        "y": 2
       },
       "hideTimeOverride": true,
       "id": 14,
@@ -500,7 +500,7 @@
         "h": 2,
         "w": 4,
         "x": 16,
-        "y": 12
+        "y": 2
       },
       "id": 6,
       "interval": null,
@@ -588,7 +588,7 @@
         "h": 2,
         "w": 4,
         "x": 20,
-        "y": 12
+        "y": 2
       },
       "id": 54,
       "interval": null,
@@ -664,7 +664,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 14
+        "y": 4
       },
       "hiddenSeries": false,
       "id": 4,
@@ -758,7 +758,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 14
+        "y": 4
       },
       "hiddenSeries": false,
       "id": 2,
@@ -848,7 +848,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 14
+        "y": 4
       },
       "id": 22,
       "pageSize": 100,
@@ -996,7 +996,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 19
+        "y": 9
       },
       "id": 20,
       "pageSize": null,
@@ -1241,7 +1241,7 @@
         "h": 1,
         "w": 8,
         "x": 0,
-        "y": 24
+        "y": 14
       },
       "id": 59,
       "interval": null,
@@ -1325,7 +1325,7 @@
         "h": 1,
         "w": 12,
         "x": 8,
-        "y": 24
+        "y": 14
       },
       "id": 30,
       "interval": null,
@@ -1410,7 +1410,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 24
+        "y": 14
       },
       "id": 41,
       "interval": null,
@@ -1488,7 +1488,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 25
+        "y": 15
       },
       "hiddenSeries": false,
       "id": 32,
@@ -1592,7 +1592,7 @@
         "h": 10,
         "w": 9,
         "x": 8,
-        "y": 25
+        "y": 15
       },
       "hiddenSeries": false,
       "hideTimeOverride": false,
@@ -1723,7 +1723,7 @@
         "h": 2,
         "w": 3,
         "x": 17,
-        "y": 25
+        "y": 15
       },
       "id": 56,
       "interval": null,
@@ -1794,7 +1794,7 @@
         "h": 10,
         "w": 4,
         "x": 20,
-        "y": 25
+        "y": 15
       },
       "id": 24,
       "limit": 10,
@@ -1830,7 +1830,7 @@
         "h": 2,
         "w": 3,
         "x": 17,
-        "y": 27
+        "y": 17
       },
       "id": 26,
       "interval": null,
@@ -1915,7 +1915,7 @@
         "h": 2,
         "w": 3,
         "x": 17,
-        "y": 29
+        "y": 19
       },
       "id": 34,
       "interval": null,
@@ -1984,7 +1984,7 @@
         "h": 4,
         "w": 3,
         "x": 17,
-        "y": 31
+        "y": 21
       },
       "id": 40,
       "options": {
@@ -2108,7 +2108,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 35
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 61,
@@ -2251,7 +2251,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 36
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 28,
@@ -2387,7 +2387,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 37
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 44,
@@ -2548,7 +2548,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 38
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 48,
@@ -2686,7 +2686,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 39
+        "y": 29
       },
       "hiddenSeries": false,
       "id": 52,
@@ -2832,7 +2832,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 40
+        "y": 30
       },
       "hiddenSeries": false,
       "id": 50,
@@ -2996,5 +2996,5 @@
   "variables": {
     "list": []
   },
-  "version": 8
+  "version": 10
 }
