@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 2,
-  "iteration": 1589219344548,
+  "iteration": 1589268493370,
   "links": [],
   "panels": [
     {
@@ -400,7 +400,7 @@
       ],
       "datasource": null,
       "decimals": 4,
-      "description": "The monthly earning will be available once your first validator activated is at least 30 days old, or you started Prometheus at least 30 days ago.",
+      "description": "The monthly earning will be available once your first validator activated is at least 30 days old, or you started Prometheus at least 30 days ago.\n\nAlso make sure you run prometheus with the flag --storage.tsdb.retention.time=31d",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -2996,5 +2996,5 @@
   "variables": {
     "list": []
   },
-  "version": 6
+  "version": 7
 }
