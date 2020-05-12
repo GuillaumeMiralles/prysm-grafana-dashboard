@@ -82,6 +82,7 @@ You can now create your own alert rules if needed, the guide above explain how.
 You can now create your own dashboard how you feel like to. Or you can also just import my own dashboards:
 - [dashboard designed for small amount of validator keys](https://raw.githubusercontent.com/GuillaumeMiralles/prysm-grafana-dashboard/master/less_10_validators.json)
 - [dashboard designed for more than 10 validator keys](https://raw.githubusercontent.com/GuillaumeMiralles/prysm-grafana-dashboard/master/more_10_validators.json).
+- [dashboard designed for monitoring beacon-chain only](./beacon-chain-only-dashboard-template.json).
 
 It’s the json for a node/validator grafana dashboard made by myself. To import this json into your Grafana dashboard, you click on the “+” icon on the left menu and select Import, you then just have to paste the json and click “Load” button.
 
