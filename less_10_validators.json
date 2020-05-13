@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1589391988532,
+  "iteration": 1589393839516,
   "links": [],
   "panels": [
     {
@@ -116,8 +116,8 @@
       "valueMaps": [
         {
           "op": "=",
-          "text": "N/A",
-          "value": "null"
+          "text": "",
+          "value": "1"
         }
       ],
       "valueName": "avg"
@@ -1297,8 +1297,8 @@
       "valueMaps": [
         {
           "op": "=",
-          "text": "N/A",
-          "value": "null"
+          "text": "",
+          "value": "1"
         }
       ],
       "valueName": "avg"
@@ -1381,8 +1381,8 @@
       "valueMaps": [
         {
           "op": "=",
-          "text": "N/A",
-          "value": "null"
+          "text": "",
+          "value": "1"
         }
       ],
       "valueName": "avg"
@@ -1467,8 +1467,8 @@
       "valueMaps": [
         {
           "op": "=",
-          "text": "N/A",
-          "value": "null"
+          "text": "",
+          "value": "1"
         }
       ],
       "valueName": "avg"
@@ -3132,5 +3132,5 @@
   "variables": {
     "list": []
   },
-  "version": 14
+  "version": 15
 }
