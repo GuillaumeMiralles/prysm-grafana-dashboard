@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 6,
-  "iteration": 1589392059753,
+  "iteration": 1589393967540,
   "links": [],
   "panels": [
     {
@@ -116,8 +116,8 @@
       "valueMaps": [
         {
           "op": "=",
-          "text": "N/A",
-          "value": "null"
+          "text": "",
+          "value": "1"
         }
       ],
       "valueName": "avg"
@@ -1297,8 +1297,8 @@
       "valueMaps": [
         {
           "op": "=",
-          "text": "N/A",
-          "value": "null"
+          "text": "",
+          "value": "1"
         }
       ],
       "valueName": "avg"
@@ -1381,8 +1381,8 @@
       "valueMaps": [
         {
           "op": "=",
-          "text": "N/A",
-          "value": "null"
+          "text": "",
+          "value": "1"
         }
       ],
       "valueName": "avg"
@@ -1467,8 +1467,8 @@
       "valueMaps": [
         {
           "op": "=",
-          "text": "N/A",
-          "value": "null"
+          "text": "",
+          "value": "1"
         }
       ],
       "valueName": "avg"
@@ -3128,9 +3128,9 @@
   },
   "timezone": "",
   "title": "ETH staking dashboard lot keys",
-  "uid": "t2yHaa3Zz2",
+  "uid": "t2yHaa3Zz3",
   "variables": {
     "list": []
   },
-  "version": 2
+  "version": 4
 }
