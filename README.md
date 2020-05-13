@@ -1,4 +1,4 @@
-# Guide monitoring + telegram alerts for prysm node and validator with Prometheus and Grafana
+# Guide step to step to get a Prysm dashboard using Grafana and Prometheus with Telegram system alerts
 
 ###### Written by Ocaa/Grums. Feel free to ask me if you face any issue on the prysm discord
 
