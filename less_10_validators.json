@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1589391361896,
+  "iteration": 1589391988532,
   "links": [],
   "panels": [
     {
@@ -1575,41 +1575,6 @@
       }
     },
     {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                66
-              ],
-              "type": "lt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "D",
-                "10s",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "Balance validators status and participation rate alert",
-        "noDataState": "no_data",
-        "notifications": []
-      },
       "aliasColors": {
         "Active": "light-green",
         "Exiting": "red",
@@ -1691,15 +1656,7 @@
           "refId": "D"
         }
       ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "lt",
-          "value": 66
-        }
-      ],
+      "thresholds": [],
       "timeFrom": "30d",
       "timeRegions": [],
       "timeShift": null,
@@ -3175,5 +3132,5 @@
   "variables": {
     "list": []
   },
-  "version": 13
+  "version": 14
 }
