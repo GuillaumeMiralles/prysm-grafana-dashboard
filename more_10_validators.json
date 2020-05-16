@@ -2955,8 +2955,8 @@
         "for": "0m",
         "frequency": "1m",
         "handler": 1,
-        "message": "NODE ALERT: THE PARTICIPATION RATE IS BELOW 66%! You will start to get penalties until the rate rise up above 66% again. This alert doesn't require any action from you",
-        "name": "NODE: Participation rate below 66%",
+        "message": "NETWORK ALERT: THE PARTICIPATION RATE IS BELOW 66%! You will start to get penalties until the rate rise up above 66% again. This alert doesn't require any action from you",
+        "name": "NETWORK: Participation rate below 66%",
         "noDataState": "no_data",
         "notifications": [
           {
