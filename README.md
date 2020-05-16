@@ -1,10 +1,10 @@
-# Guide step to step to get a Prysm dashboard using Grafana and Prometheus with Telegram system alerts
-
 ---
 id: grafana-dashboard
 title: Monitoring and alerting with Grafana
 sidebar_label: Monitoring with Grafana
 ---
+
+# Guide step to step to get a Prysm dashboard using Grafana and Prometheus with Telegram system alerts
 
 Now that you have your validator and node process running, you will probably need a nice dashboard and alert system to ensure at maximum the profitability of your staking ETH. Here is a simple guide that explain how to get one, without any developer skill.
 
