@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1589733246756,
+  "iteration": 1589735422306,
   "links": [],
   "panels": [
     {
@@ -27,7 +27,7 @@
       "description": "To delete this panel: left click on the title, then chose remove",
       "gridPos": {
         "h": 11,
-        "w": 24,
+        "w": 23,
         "x": 0,
         "y": 0
       },
@@ -1479,6 +1479,8 @@
     },
     {
       "aliasColors": {
+        "CPU beacon node": "red",
+        "CPU validator": "blue",
         "beacon node": "rgb(68, 218, 252)",
         "validator": "yellow"
       },
@@ -1486,7 +1488,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "fill": 1,
+      "fill": 5,
       "fillGradient": 0,
       "gridPos": {
         "h": 10,
@@ -1497,10 +1499,14 @@
       "hiddenSeries": false,
       "id": 32,
       "legend": {
+        "alignAsTable": false,
         "avg": false,
-        "current": false,
-        "max": true,
-        "min": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
@@ -1511,11 +1517,25 @@
       "options": {
         "dataLinks": []
       },
-      "percentage": false,
+      "percentage": true,
+      "pluginVersion": "6.7.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {
+          "alias": "CPU beacon node",
+          "fill": 0,
+          "linewidth": 2,
+          "yaxis": 2
+        },
+        {
+          "alias": "CPU validator",
+          "fill": 0,
+          "linewidth": 2,
+          "yaxis": 2
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
@@ -1523,8 +1543,14 @@
         {
           "expr": "go_memstats_alloc_bytes",
           "interval": "",
-          "legendFormat": "{{job}}",
+          "legendFormat": "memory {{job}}",
           "refId": "A"
+        },
+        {
+          "expr": "(process_cpu_seconds_total - process_cpu_seconds_total offset 15s)*100/15/go_maxprocs",
+          "interval": "",
+          "legendFormat": "CPU {{job}}",
+          "refId": "B"
         }
       ],
       "thresholds": [
@@ -1540,7 +1566,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Mem usage",
+      "title": "Hardware usage",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1565,12 +1591,12 @@
           "show": true
         },
         {
-          "format": "short",
-          "label": null,
+          "format": "percent",
+          "label": "CPU usage rate",
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
@@ -3137,5 +3163,5 @@
   "variables": {
     "list": []
   },
-  "version": 23
+  "version": 27
 }
