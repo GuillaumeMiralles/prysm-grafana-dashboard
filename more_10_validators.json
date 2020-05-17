@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 6,
-  "iteration": 1589393967540,
+  "iteration": 1589700241535,
   "links": [],
   "panels": [
     {
@@ -190,7 +190,7 @@
       "targets": [
         {
           "expr": "sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32",
-          "instant": false,
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -280,6 +280,7 @@
         {
           "expr": "sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32",
           "format": "time_series",
+          "instant": true,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -369,6 +370,7 @@
         {
           "expr": "sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32",
           "hide": false,
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -456,6 +458,7 @@
       "targets": [
         {
           "expr": "sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "B"
@@ -543,6 +546,7 @@
       "targets": [
         {
           "expr": "sum(validator_balance)-count(validator_balance > 16 and validator_statuses == 3)*32",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -1323,7 +1327,7 @@
       },
       "gridPos": {
         "h": 1,
-        "w": 12,
+        "w": 11,
         "x": 8,
         "y": 34
       },
@@ -1408,8 +1412,8 @@
       },
       "gridPos": {
         "h": 1,
-        "w": 4,
-        "x": 20,
+        "w": 5,
+        "x": 19,
         "y": 34
       },
       "id": 41,
@@ -1590,7 +1594,7 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 10,
-        "w": 9,
+        "w": 8,
         "x": 8,
         "y": 35
       },
@@ -1722,7 +1726,7 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 17,
+        "x": 16,
         "y": 35
       },
       "id": 56,
@@ -1792,8 +1796,8 @@
       "folderId": -1,
       "gridPos": {
         "h": 10,
-        "w": 4,
-        "x": 20,
+        "w": 5,
+        "x": 19,
         "y": 35
       },
       "id": 24,
@@ -1829,7 +1833,7 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 17,
+        "x": 16,
         "y": 37
       },
       "id": 26,
@@ -1914,7 +1918,7 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 17,
+        "x": 16,
         "y": 39
       },
       "id": 34,
@@ -1983,7 +1987,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 17,
+        "x": 16,
         "y": 41
       },
       "id": 40,
@@ -2106,8 +2110,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
-        "w": 4,
-        "x": 20,
+        "w": 5,
+        "x": 19,
         "y": 45
       },
       "hiddenSeries": false,
@@ -2233,7 +2237,7 @@
         "handler": 1,
         "message": "NODE ALERT: MORE THAN 50 SLOTS BEHIND THAN THE CHAIN",
         "name": "NODE: More than 50 slots behind",
-        "noDataState": "no_data",
+        "noDataState": "ok",
         "notifications": [
           {
             "uid": "USY-LmRGz"
@@ -2249,8 +2253,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
-        "w": 4,
-        "x": 20,
+        "w": 5,
+        "x": 19,
         "y": 46
       },
       "hiddenSeries": false,
@@ -2342,7 +2346,7 @@
           {
             "evaluator": {
               "params": [
-                0.8
+                0.9
               ],
               "type": "lt"
             },
@@ -2385,8 +2389,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
-        "w": 4,
-        "x": 20,
+        "w": 5,
+        "x": 19,
         "y": 47
       },
       "hiddenSeries": false,
@@ -2430,7 +2434,7 @@
           "fill": true,
           "line": true,
           "op": "lt",
-          "value": 0.8
+          "value": 0.9
         }
       ],
       "timeFrom": null,
@@ -2530,7 +2534,7 @@
         "handler": 1,
         "message": "VALIDATOR ALERT: THE EARNING IN THE LAST HOUR IS LESS THAN 0",
         "name": "VALIDATOR: Hourly earning <= 0",
-        "noDataState": "no_data",
+        "noDataState": "ok",
         "notifications": [
           {
             "uid": "USY-LmRGz"
@@ -2546,8 +2550,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
-        "w": 4,
-        "x": 20,
+        "w": 5,
+        "x": 19,
         "y": 48
       },
       "hiddenSeries": false,
@@ -2578,7 +2582,8 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(delta(validator_balance[1h]))",
+          "expr": "sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32",
+          "instant": false,
           "interval": "",
           "legendFormat": "validators earning on 1h",
           "refId": "A"
@@ -2668,7 +2673,7 @@
         "handler": 1,
         "message": "NODE ALERT: MORE THAN 50 ERRORS IN THE LAST HOUR",
         "name": "NODE: More than 50 errors in 1h",
-        "noDataState": "no_data",
+        "noDataState": "ok",
         "notifications": [
           {
             "uid": "USY-LmRGz"
@@ -2684,8 +2689,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
-        "w": 4,
-        "x": 20,
+        "w": 5,
+        "x": 19,
         "y": 49
       },
       "hiddenSeries": false,
@@ -2814,7 +2819,7 @@
         "handler": 1,
         "message": "VALIDATOR ALERT: YOUR VALIDATOR HAS BEEN SLASHED",
         "name": "VALIDATOR: Validator has been slashed",
-        "noDataState": "no_data",
+        "noDataState": "ok",
         "notifications": [
           {
             "uid": "USY-LmRGz"
@@ -2830,8 +2835,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
-        "w": 4,
-        "x": 20,
+        "w": 5,
+        "x": 19,
         "y": 50
       },
       "hiddenSeries": false,
@@ -2957,7 +2962,7 @@
         "handler": 1,
         "message": "NETWORK ALERT: THE PARTICIPATION RATE IS BELOW 66%! You will start to get penalties until the rate rise up above 66% again. This alert doesn't require any action from you",
         "name": "NETWORK: Participation rate below 66%",
-        "noDataState": "no_data",
+        "noDataState": "ok",
         "notifications": [
           {
             "uid": "USY-LmRGz"
@@ -2973,8 +2978,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
-        "w": 4,
-        "x": 20,
+        "w": 5,
+        "x": 19,
         "y": 51
       },
       "hiddenSeries": false,
@@ -3132,5 +3137,5 @@
   "variables": {
     "list": []
   },
-  "version": 4
+  "version": 7
 }
