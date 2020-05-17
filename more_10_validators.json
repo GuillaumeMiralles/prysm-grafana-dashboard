@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 6,
-  "iteration": 1589700241535,
+  "iteration": 1589734705354,
   "links": [],
   "panels": [
     {
@@ -1521,7 +1521,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "process_resident_memory_bytes",
+          "expr": "go_memstats_alloc_bytes",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
@@ -3137,5 +3137,5 @@
   "variables": {
     "list": []
   },
-  "version": 7
+  "version": 8
 }
