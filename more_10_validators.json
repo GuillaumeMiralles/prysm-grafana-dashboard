@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 6,
-  "iteration": 1589742092705,
+  "iteration": 1589813593553,
   "links": [],
   "panels": [
     {
@@ -1484,6 +1484,7 @@
         "CPU beacon node": "red",
         "CPU validator": "blue",
         "beacon node": "rgb(68, 218, 252)",
+        "memory beacon node": "rgb(96, 252, 255)",
         "validator": "yellow"
       },
       "bars": false,
@@ -3161,5 +3162,5 @@
   "variables": {
     "list": []
   },
-  "version": 10
+  "version": 11
 }
