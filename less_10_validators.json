@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1589735422306,
+  "iteration": 1589814060646,
   "links": [],
   "panels": [
     {
@@ -27,7 +27,7 @@
       "description": "To delete this panel: left click on the title, then chose remove",
       "gridPos": {
         "h": 11,
-        "w": 23,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -1482,6 +1482,7 @@
         "CPU beacon node": "red",
         "CPU validator": "blue",
         "beacon node": "rgb(68, 218, 252)",
+        "memory beacon node": "rgb(96, 252, 255)",
         "validator": "yellow"
       },
       "bars": false,
@@ -1819,7 +1820,7 @@
       "dashboardFilter": "",
       "dashboardTags": [],
       "datasource": null,
-      "folderId": -1,
+      "folderId": null,
       "gridPos": {
         "h": 10,
         "w": 5,
@@ -3163,5 +3164,5 @@
   "variables": {
     "list": []
   },
-  "version": 27
+  "version": 31
 }
