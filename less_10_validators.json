@@ -1548,7 +1548,7 @@
           "refId": "A"
         },
         {
-          "expr": "(process_cpu_seconds_total - process_cpu_seconds_total offset 15s)*100/15/go_maxprocs",
+          "expr": "(process_cpu_seconds_total - process_cpu_seconds_total offset 15s) > 0*100/15/go_maxprocs",
           "interval": "",
           "legendFormat": "CPU {{job}}",
           "refId": "B"
