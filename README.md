@@ -134,6 +134,14 @@ Use the **Send test** button to make sure that your bot is sending alerts to you
 
 You can now create your own alert rules if needed, the guide above explain how.
 
+#### Discord
+  Select **Discord** in the type drop down selection. To complete the set up we will need a Webhook URL from discord. 
+  
+  Head over to discord and create your own server and make a text channel for these alerts. Go to **Server Settings->Webhooks** and select **Create Webhook**. Add a name to your webhook and select the text channel you created for these alerts in the channel drop down selection. Copy the **Webhook URL** and click Save. Your new webhook should appear in the webhook settings page. Make sure you do not share this webhook url with anyone else!
+  
+  Now head back to the Grafana site where you selected discord as your notification type and paste the Webhook URL in the settings. Click on **Send Test** and you will recieve a test alert in your text channel on your discord server! Click **Save** to finish the set up.
+###### Thanks to Space for this alert section
+
 ### Creating/importing dashboards
 You can now create your own dashboard how you feel like to. Or you can also just import the Prysm dashboards:
 - [dashboard designed for small amount of validator keys](https://raw.githubusercontent.com/GuillaumeMiralles/prysm-grafana-dashboard/master/less_10_validators.json)
