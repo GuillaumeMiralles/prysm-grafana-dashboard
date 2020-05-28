@@ -18,15 +18,21 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 6,
-  "iteration": 1590137612297,
+  "iteration": 1590677993957,
   "links": [],
   "panels": [
     {
-      "content": "\n## Presentation\n---------------\nWelcome to my dashboard!\n\nIf you face any issue to understand a panel or to know what to do, make sure to read the small note on the corner top left of the panel if there is one!\n\n\n\n### Bug!\n---------------\n\nIf you find a bug, please report it to me on discord, Ocaa/grums. I'm foundable on the prysm discord then dm me directly. I'll try to give a fix and update the dashboard on the gist!\nThanks for all the reports\n\n\n\n\n-------------\nAfter reading it, you can now delete me. And don't forget to save the dashboard after deleting me! (button on the upper right) :)\n\nEnjoy\n\n\n\n",
+      "content": "\n## Presentation\n-----\nWelcome to my dashboard!\n\nEnsure to update your grafana to the version 7.0.1 or more. Previous version won't have everything working properly.\n\nIf you face any issue to understand a panel or to know what to do, make sure to read the small note on the corner top left of the panel if there is one!\n\n\n## Earning panels exceptions\n-----\nThe earning panels are supposing that you have done deposits of 32 ETH exactly. If you see some incoherence in this values it's probably because you have deposited more than 32 ETH.\nIf so, you can fix the total earning panel by adding at the end of the query the substraction of your excedend 32 ETH. For the others earning panels (hourly daily weekly monthly),\nit will be fixed by itself with time, but you can still fix it temporarily by doing the same job than on the total earning panel (then don't forget to remove your temporarily fix once it has been fixed automatically)\n\n##### Total earning fix\n-----\nIf you sent 32.5 ETH on each validator and you have 5 validators, the total earning query will look like\n```\nsum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32 - 0.5*5\n```\n\nTo edit a panel, left click on the panel title then chose edit, then ensure to save the dashboard !\n\n\n\n### Bug!\n-----\nIf you find a bug, please report it to me on discord, Ocaa/grums. I'm foundable on the prysm discord then dm me directly. I'll try to give a fix and update the dashboard !\nThanks for all the reports\n\n\n\n\n-----\nAfter reading it, you can now delete me. And don't forget to save the dashboard after deleting me! (button on the upper right) :)\n\nEnjoy\n\n\n\n",
       "datasource": null,
       "description": "To delete this panel: left click on the title, then chose remove",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 11,
+        "h": 20,
         "w": 24,
         "x": 0,
         "y": 0
@@ -48,6 +54,12 @@
         "rgb(176, 83, 5)"
       ],
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -60,7 +72,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 20
       },
       "id": 42,
       "interval": null,
@@ -123,161 +135,539 @@
       "valueName": "avg"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
-      "description": "Each earning time frame will be available once your first validator activated is at least the time frame old, or you started Prometheus at least the time frame ago.",
-      "gridPos": {
-        "h": 2,
-        "w": 20,
-        "x": 0,
-        "y": 12
+      "description": "This panel shows the number of ETH earned during the last hour, and the annualized % of the hourly earning.\n\nThose data won't be shown until the first validator is at least one hour old, or that you started prometheus at least one hour ago.\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 4,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0
+              },
+              {
+                "color": "#299c46",
+                "value": 0.0001
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Annualized %"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "yellow",
+                      "value": 0
+                    },
+                    {
+                      "color": "#299c46",
+                      "value": 5
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
       },
-      "hideTimeOverride": true,
-      "id": 16,
-      "links": [],
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 21
+      },
+      "id": 67,
+      "interval": "",
       "options": {
         "colorMode": "background",
-        "fieldOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "defaults": {
-            "decimals": 4,
-            "mappings": [
-              {
-                "id": 0,
-                "op": "=",
-                "text": "Not enough data",
-                "type": 1,
-                "value": "null"
-              }
-            ],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "#d44a3a",
-                  "value": null
-                },
-                {
-                  "color": "#FADE2A",
-                  "value": 0
-                },
-                {
-                  "color": "#299c46",
-                  "value": 0.0001
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": [],
-          "values": true
-        },
         "graphMode": "none",
         "justifyMode": "auto",
-        "orientation": "vertical"
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "values": false
+        }
       },
-      "pluginVersion": "6.7.3",
+      "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32)",
           "instant": true,
           "interval": "",
-          "legendFormat": "Hourly",
-          "refId": "A"
-        },
-        {
-          "expr": "sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "Daily",
+          "legendFormat": "ETH",
           "refId": "B"
         },
         {
-          "expr": "sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32)/(avg_over_time(count(validator_balance > 16)[1h:30s])*32/24/365)*100",
           "instant": true,
           "interval": "",
-          "legendFormat": "Weekly",
-          "refId": "C"
-        },
-        {
-          "expr": "sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "Monthly",
-          "refId": "D"
-        },
-        {
-          "expr": "sum(validator_balance)-count(validator_balance > 16 and validator_statuses == 3)*32",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "Total",
-          "refId": "E"
+          "legendFormat": "Annualized %",
+          "refId": "A"
         }
       ],
-      "timeFrom": "30d",
+      "timeFrom": null,
       "timeShift": null,
-      "title": "Earning (ETH)",
+      "title": "Hourly earning",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "This panel shows the number of ETH earned during the last day, and the annualized % of the daily earning.\n\nThose data won't be shown until the first validator is at least one day old, or that you started prometheus at least one day ago.\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 4,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0
+              },
+              {
+                "color": "#299c46",
+                "value": 0.0001
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Annualized %"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "yellow",
+                      "value": 0
+                    },
+                    {
+                      "color": "#299c46",
+                      "value": 5
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 21
+      },
+      "id": 73,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.1",
+      "targets": [
+        {
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32)",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "ETH",
+          "refId": "A"
+        },
+        {
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32)/(avg_over_time(count(validator_balance > 16)[1d:12m])*32/365)*100",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Annualized %",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Daily earning",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "This panel shows the number of ETH earned during the last week, and the annualized % of the weekly earning.\n\nThose data won't be shown until the first validator is at least one week old, or that you started prometheus at least one week ago.\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 4,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0
+              },
+              {
+                "color": "#299c46",
+                "value": 0.0001
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Annualized %"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "yellow",
+                      "value": 0
+                    },
+                    {
+                      "color": "#299c46",
+                      "value": 5
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 21
+      },
+      "id": 75,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.1",
+      "targets": [
+        {
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32)",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "ETH",
+          "refId": "A"
+        },
+        {
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32)/(avg_over_time(count(validator_balance > 16)[1w:84m])*32*7/365)*100",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Annualized %",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Weekly earning",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "This panel shows the number of ETH earned during the last month, and the annualized % of the monthly earning.\n\nThose data won't be shown until the first validator is at least one month old, or that you started prometheus at least one month ago. Ensure to run Prometheus with the flag `--storage.tsdb.retention.time=31d` if you want this panel to get enough data\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 4,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 0
+              },
+              {
+                "color": "#299c46",
+                "value": 0.0001
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 21
+      },
+      "id": 77,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.1",
+      "targets": [
+        {
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32)",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "ETH",
+          "refId": "A"
+        },
+        {
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32)/(avg_over_time(count(validator_balance > 16)[30d:6h])*32/12)*100",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Annualized %",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Monthly earning",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 4,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#fade2a",
+                "value": 0
+              },
+              {
+                "color": "#299c46",
+                "value": 0.0001
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 16,
+        "y": 21
+      },
+      "id": 69,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.1",
+      "targets": [
+        {
+          "expr": "sum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Earning (ETH)",
+          "refId": "A"
+        },
+        {
+          "expr": "(sum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32)*100/(count(validator_balance > 16 and validator_statuses == 3)*32)",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "ROI (%)",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgb(255, 255, 255)",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 20,
+        "y": 21
+      },
+      "id": 79,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.1",
+      "targets": [
+        {
+          "expr": "count(validator_balance > 16 and validator_statuses == 3)",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Number of validator",
       "type": "stat"
     },
     {
       "cacheTimeout": null,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 1,
+          "mappings": [],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#FADE2A",
+                "value": 0.17
+              },
+              {
+                "color": "#299c46",
+                "value": 11.9
+              }
+            ]
+          },
+          "unit": "h"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 2,
         "w": 4,
         "x": 20,
-        "y": 12
+        "y": 23
       },
       "id": 54,
       "links": [],
       "options": {
         "colorMode": "background",
-        "fieldOptions": {
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
-          "defaults": {
-            "decimals": 1,
-            "mappings": [
-              {
-                "id": 0,
-                "op": "=",
-                "text": "N/A on process",
-                "type": 1,
-                "value": "null"
-              }
-            ],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "#d44a3a",
-                  "value": null
-                },
-                {
-                  "color": "#FADE2A",
-                  "value": 0.17
-                },
-                {
-                  "color": "#299c46",
-                  "value": 11.9
-                }
-              ]
-            },
-            "unit": "h"
-          },
-          "overrides": [],
           "values": false
-        },
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal"
+        }
       },
-      "pluginVersion": "6.7.3",
+      "pluginVersion": "7.0.1",
       "targets": [
         {
           "expr": "(time()-process_start_time_seconds{job=\"$validator_job\"})/3600",
@@ -300,13 +690,19 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 10,
         "w": 10,
         "x": 0,
-        "y": 14
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 4,
@@ -387,12 +783,18 @@
       "columns": [],
       "datasource": null,
       "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fontSize": "100%",
       "gridPos": {
-        "h": 20,
+        "h": 19,
         "w": 6,
         "x": 10,
-        "y": 14
+        "y": 25
       },
       "id": 22,
       "pageSize": 100,
@@ -529,18 +931,25 @@
       "timeShift": null,
       "title": "Validator main info",
       "transform": "table",
-      "type": "table"
+      "transparent": true,
+      "type": "table-old"
     },
     {
       "columns": [],
       "datasource": null,
       "description": "This panel will count only the votes done since your validator process started",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fontSize": "100%",
       "gridPos": {
-        "h": 20,
+        "h": 19,
         "w": 8,
         "x": 16,
-        "y": 14
+        "y": 25
       },
       "id": 20,
       "pageSize": null,
@@ -761,7 +1170,8 @@
       "timeShift": null,
       "title": "Validator vote summary",
       "transform": "table",
-      "type": "table"
+      "transparent": true,
+      "type": "table-old"
     },
     {
       "aliasColors": {
@@ -774,13 +1184,19 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 10,
+        "h": 9,
         "w": 10,
         "x": 0,
-        "y": 24
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 2,
@@ -871,6 +1287,12 @@
         "rgb(99, 99, 99)"
       ],
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -883,7 +1305,7 @@
         "h": 1,
         "w": 8,
         "x": 0,
-        "y": 34
+        "y": 44
       },
       "id": 59,
       "interval": null,
@@ -921,7 +1343,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "NODE",
       "targets": [
         {
           "expr": "1",
@@ -955,6 +1377,12 @@
         "#1F60C4"
       ],
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -967,7 +1395,7 @@
         "h": 1,
         "w": 11,
         "x": 8,
-        "y": 34
+        "y": 44
       },
       "id": 30,
       "interval": null,
@@ -1005,7 +1433,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "NODE",
       "targets": [
         {
           "expr": "1",
@@ -1040,6 +1468,12 @@
       ],
       "datasource": null,
       "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -1052,7 +1486,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 34
+        "y": 44
       },
       "id": 41,
       "interval": null,
@@ -1118,23 +1552,29 @@
     {
       "aliasColors": {
         "CPU beacon node": "red",
-        "CPU validator": "orange",
+        "CPU validator": "purple",
         "beacon node": "rgb(68, 218, 252)",
         "memory beacon node": "rgb(96, 252, 255)",
-        "memory validator": "dark-purple",
+        "memory validator": "rgb(255, 255, 160)",
         "validator": "yellow"
       },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 5,
       "fillGradient": 0,
       "gridPos": {
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 35
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 32,
@@ -1258,13 +1698,19 @@
       "dashes": false,
       "datasource": null,
       "description": "This graph is made for trading purpose mostly.\nSupposing that if a lot of validators are exiting, price is gonna dump.\n\nAlso this can prevent to exit while exiting queue is too long, same for depositing while pending queue is too long.\n\n",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 35
+        "y": 45
       },
       "hiddenSeries": false,
       "hideTimeOverride": false,
@@ -1373,59 +1819,54 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 1,
+          "mappings": [],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#FADE2A",
+                "value": 0.17
+              },
+              {
+                "color": "#299c46",
+                "value": 11.9
+              }
+            ]
+          },
+          "unit": "h"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 35
+        "y": 45
       },
       "id": 56,
       "links": [],
       "options": {
         "colorMode": "background",
-        "fieldOptions": {
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
-          "defaults": {
-            "decimals": 1,
-            "mappings": [
-              {
-                "id": 0,
-                "op": "=",
-                "text": "N/A on process",
-                "type": 1,
-                "value": "null"
-              }
-            ],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "#d44a3a",
-                  "value": null
-                },
-                {
-                  "color": "#FADE2A",
-                  "value": 0.17
-                },
-                {
-                  "color": "#299c46",
-                  "value": 11.9
-                }
-              ]
-            },
-            "unit": "h"
-          },
-          "overrides": [],
           "values": false
-        },
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal"
+        }
       },
-      "pluginVersion": "6.7.3",
+      "pluginVersion": "7.0.1",
       "targets": [
         {
           "expr": "(time()-process_start_time_seconds{job=\"$node_job\"})/3600",
@@ -1444,12 +1885,18 @@
       "dashboardFilter": "",
       "dashboardTags": [],
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "folderId": null,
       "gridPos": {
         "h": 10,
         "w": 5,
         "x": 19,
-        "y": 35
+        "y": 45
       },
       "id": 24,
       "limit": 10,
@@ -1466,58 +1913,53 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "#eab839",
+                "value": 5
+              },
+              {
+                "color": "red",
+                "value": 20
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 37
+        "y": 47
       },
       "id": 26,
       "links": [],
       "options": {
         "colorMode": "background",
-        "fieldOptions": {
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
-          "defaults": {
-            "mappings": [
-              {
-                "id": 0,
-                "op": "=",
-                "text": "N/A",
-                "type": 1,
-                "value": "null"
-              }
-            ],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "#299c46",
-                  "value": null
-                },
-                {
-                  "color": "rgba(237, 129, 40, 0.89)",
-                  "value": 5
-                },
-                {
-                  "color": "#d44a3a",
-                  "value": 10
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": [],
           "values": false
-        },
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal"
+        }
       },
-      "pluginVersion": "6.7.3",
+      "pluginVersion": "7.0.1",
       "targets": [
         {
           "expr": "beacon_clock_time_slot-beacon_head_slot",
@@ -1535,58 +1977,53 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#F2CC0C",
+                "value": 5
+              },
+              {
+                "color": "#299c46",
+                "value": 10
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 39
+        "y": 49
       },
       "id": 34,
       "links": [],
       "options": {
         "colorMode": "background",
-        "fieldOptions": {
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
-          "defaults": {
-            "mappings": [
-              {
-                "id": 0,
-                "op": "=",
-                "text": "N/A",
-                "type": 1,
-                "value": "null"
-              }
-            ],
-            "nullValueMode": "connected",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "#d44a3a",
-                  "value": null
-                },
-                {
-                  "color": "#F2CC0C",
-                  "value": 5
-                },
-                {
-                  "color": "#299c46",
-                  "value": 10
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": [],
           "values": false
-        },
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal"
+        }
       },
-      "pluginVersion": "6.7.3",
+      "pluginVersion": "7.0.1",
       "targets": [
         {
           "expr": "p2p_peer_count{state=\"Connected\"}",
@@ -1604,61 +2041,64 @@
     {
       "datasource": null,
       "description": "This panel won't have consistant values during the first hour of the node started process",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 0,
+          "displayName": "",
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "operator": "",
+              "text": "0",
+              "to": "",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 25
+              },
+              {
+                "color": "red",
+                "value": 50
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 41
+        "y": 51
       },
       "id": 40,
       "options": {
         "displayMode": "lcd",
-        "fieldOptions": {
+        "orientation": "horizontal",
+        "reduceOptions": {
           "calcs": [
             "last"
           ],
-          "defaults": {
-            "decimals": 0,
-            "mappings": [
-              {
-                "from": "",
-                "id": 1,
-                "operator": "",
-                "text": "0",
-                "to": "",
-                "type": 1,
-                "value": "null"
-              }
-            ],
-            "max": 100,
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "#EAB839",
-                  "value": 25
-                },
-                {
-                  "color": "red",
-                  "value": 50
-                }
-              ]
-            },
-            "title": "",
-            "unit": "short"
-          },
-          "overrides": [],
           "values": false
         },
-        "orientation": "horizontal",
         "showUnfilled": true
       },
-      "pluginVersion": "6.7.3",
+      "pluginVersion": "7.0.1",
       "targets": [
         {
           "expr": "sum(delta(log_entries_total{job=\"$node_job\", level=\"error\"}[1h]) > 0)",
@@ -1727,13 +2167,19 @@
       "dashes": false,
       "datasource": null,
       "description": "This alert is useful only for people who has automatic restart of the process after crash. \nThis can be made for example by using the prysm.bat file on windows with \"set PRYSM_AUTORESTART=true&\", or with docker with \"--restart always\"",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 45
+        "y": 55
       },
       "hiddenSeries": false,
       "id": 61,
@@ -1870,13 +2316,19 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 46
+        "y": 56
       },
       "hiddenSeries": false,
       "id": 28,
@@ -2006,13 +2458,19 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 47
+        "y": 57
       },
       "hiddenSeries": false,
       "id": 44,
@@ -2042,11 +2500,18 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "up",
+          "expr": "up{job=\"beacon node\"}",
+          "hide": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{job}}",
+          "legendFormat": "beacon node",
           "refId": "A"
+        },
+        {
+          "expr": "up{job=\"validator\"}",
+          "interval": "",
+          "legendFormat": "validator",
+          "refId": "B"
         }
       ],
       "thresholds": [
@@ -2167,13 +2632,19 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 48
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 48,
@@ -2329,13 +2800,19 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 49
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 52,
@@ -2365,14 +2842,14 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(delta(log_entries_total{job=\"beacon node\", level=\"error\"}[1h]))",
+          "expr": "sum(delta(log_entries_total{job=\"beacon node\", level=\"error\"}[1h]) > 0) ",
           "instant": false,
           "interval": "",
           "legendFormat": "errors",
           "refId": "A"
         },
         {
-          "expr": "sum(delta(log_entries_total{job=\"beacon node\", level=\"warning\"}[1h]))",
+          "expr": "sum(delta(log_entries_total{job=\"beacon node\", level=\"warning\"}[1h]) > 0)",
           "instant": false,
           "interval": "",
           "legendFormat": "warnings",
@@ -2475,13 +2952,19 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 50
+        "y": 60
       },
       "hiddenSeries": false,
       "id": 50,
@@ -2618,13 +3101,19 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 51
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 65,
@@ -2710,7 +3199,7 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 22,
+  "schemaVersion": 25,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -2763,7 +3252,6 @@
   },
   "timepicker": {
     "refresh_intervals": [
-      "5s",
       "10s",
       "30s",
       "1m",
@@ -2778,8 +3266,5 @@
   "timezone": "",
   "title": "ETH staking dashboard lot keys",
   "uid": "t2yHaa3Zz3",
-  "variables": {
-    "list": []
-  },
-  "version": 16
+  "version": 18
 }
