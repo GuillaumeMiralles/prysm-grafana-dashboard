@@ -4,7 +4,7 @@
 Now that you have your validator and node process running, you will probably need a nice dashboard and alert system to ensure at maximum the profitability of your staking ETH. Here is a simple guide that explain how to get one, without any developer skill.
 
 Here is the result of what you will get if you follow this guide!
-![Grafana dashboard for prysm node and validator](https://imgur.com/nbI9KPP.png "Grafana dashboard for prysm node and validator")
+![Grafana dashboard for prysm node and validator](https://imgur.com/nKzkr4Y.png "Grafana dashboard for prysm node and validator")
 
 
 ## Metrics from validators and node process
