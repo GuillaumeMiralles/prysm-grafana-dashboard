@@ -92,7 +92,7 @@ Once the **prometheus.yml** file has been updated, you can run the **prometheus.
 If everything is working, you should see a page similar to this
 ![Prometheus page](https://i.imgur.com/MR7rckX.png "Prometheus page")
 
-Now you have to make sure that you can find both metrics in the previous image: `validator_balance` and `total_voted_target_balances`. You need to find both metrics to have access to all of them.
+Now you have to make sure that you can find both metrics in the previous image: `validator_statuses` and `total_voted_target_balances`. You need to find both metrics to have access to all of them.
 
 ### Setting the storage time to 31 days (recommended)
 You'll probably need to add this flag while running **prometheus** to upgrade to 31 days the storage time of the metrics. By default, this value is set to 15 days
