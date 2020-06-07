@@ -1,25 +1,23 @@
-# Guide step to step to get a Prysm dashboard using Grafana and Prometheus with alert system
-###### Written by Ocaa/grums, contact me on prysm discord if you face any issue or bug
+Grafana is an open-source data metrics tool that is used to aggregate large amounts of data into a comprehensive visual dashboard for easy analysis. This section includes instructions for installing Grafana on the local machine and configuring Telegram or Discord alerts for monitoring validator status on-the-go.
 
-Now that you have your validator and node process running, you will probably need a nice dashboard and alert system to ensure at maximum the profitability of your staking ETH. Here is a simple guide that explain how to get one, without any developer skill.
-
-Here is the result of what you will get if you follow this guide!
-![Grafana dashboard for prysm node and validator](https://imgur.com/nKzkr4Y.png "Grafana dashboard for prysm node and validator")
+![Grafana dashboard for prysm node and validator](/img/dashboard_overview.png "Grafana dashboard for prysm node and validator")
 
 
-## Metrics from validators and node process
-First thing you need to do, is to add this flag to the end of the validator command
-```
---enable-account-metrics
-```
+### Getting account metrics
+ Ensure metrics have been activated by visiting the following dashboards:
+  * Node metrics are found at http://localhost:8080/metrics
+  * Validator metrics are found at http://localhost:8081/metrics
 
-Now you have to make sure that you have access to both metrics:
-- on the machine running the node, you will find the node metrics on http://localhost:8080/metrics
-- on the machine running the validator, you will find the validator metrics on http://localhost:8081/metrics
+## Installing Prometheus
 
-## Prometheus
-### Installation
-[Download Prometheus](https://prometheus.io/download/), then go to the directory where the **prometheus.exe** file is, and edit the **prometheus.yml** file to replace the content of the file by this:
+Prometheus must first be installed to fetch the data from the beacon node and validator for Grafana to display.
+
+1. [Download the Prometheus files](https://prometheus.io/download/) suited for the host system. 
+
+2. Extract the archive and enter it's new directory. 
+
+3. Locate the `prometheus.yml` file and replace the contents with the following:
+
 ```# my global config
 global:
   scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
@@ -45,109 +43,83 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:8080']
 ```
-#### Node and validator running on different machine
-You still can regroup your metrics on a single machine.
 
-##### **Local network**
-If you don’t run your validator and your node on the same machine but on the same network, you will need to replace `localhost` by the **private** IP of the machine that run the process in the **prometheus.yml** file.
-
-For the job `beacon node` you will need to replace `localhost` by the **private** IP of the machine where the `beacon node` is running. Same goes for validator.
-
-To determine your  **private**  IP address, or run the appropriate command for your OS:
-
-###### **GNU/Linux:**
-
+4. In the same directory, double-click the **prometheus** file (with extension `.exe` in Windows) to start Prometheus,
+or do so in a terminal by issuing the command:
 ```
-ip addr show | grep "inet " | grep -v 127.0.0.1
+./prometheus
 ```
-
-###### **Windows:**
-
-```
-ipconfig | findstr /i "IPv4 Address"
-```
-
-###### **macOS:**
-
-```
-ifconfig | grep "inet " | grep -v 127.0.0.1
-```
-
-##### **Different network**
-If you don’t run your validator and your node on the same machine and also on different network, you will need to replace `localhost` by the **public** IP of the machine that run the process in the **prometheus.yml** file.
-
-For the job `beacon node` you will need to replace `localhost` by the **public** IP of the machine where the `beacon node` is running. Same goes for validator.
-
-To determine your  **public**  IP address, visit ([http://v4.ident.me/](http://v4.ident.me/)) or run this command:
-
-```
-curl v4.ident.me
-```
-
-  > **NOTICE:** In the case of different network, you might need to configure your firewalls for [port forwarding](https://github.com/wgknowles/documentation/blob/15da3fb1ea477f260ef287497fe047b0a78879b3/docs/prysm-usage/p2p-host-ip.md#port-forwarding).
+  A terminal will open presenting the Prometheus log. 
  
+  > **NOTICE:** Prometheus' default data logging time is 15 days. To extend dashboard statistics to 31 days, add `--storage.tsdb.retention.time=31d` to this startup command.
 
-### Verification
-Once the **prometheus.yml** file has been updated, you can run the **prometheus.exe** file, then open this web page http://localhost:9090/graph
-If everything is working, you should see a page similar to this
-![Prometheus page](https://i.imgur.com/MR7rckX.png "Prometheus page")
+5. Navigate to http://localhost:9090/graph in a browser. It will present a page similar to this:
+![Prometheus page](/img/prometheus_page.png "Prometheus page")
 
-Now you have to make sure that you can find both metrics in the previous image: `validator_statuses` and `total_voted_target_balances`. You need to find both metrics to have access to all of them.
+Take note of the `validator_statuses` and `total_voted_target_balances`, as they are required later.
 
-### Setting the storage time to 31 days (recommended)
-You'll probably need to add this flag while running **prometheus** to upgrade to 31 days the storage time of the metrics. By default, this value is set to 15 days
-```
---storage.tsdb.retention.time=31d
-```
-  > **NOTICE:** If you don't plan to have panels that will require metrics older than 15 days then you can skip this part
+#### (Optional) Windows: Running Prometheus in the background
 
-
-### Windows: Prometheus running in background (facultative)
-For that you need to open a **Windows Powershell** prompt, then go to the directory where is located the **prometheus.exe** file (using command `cd`) and to run this:
+In a **Windows Powershell** prompt, navigate to the directory the `prometheus.exe` file is saved and issue the command:
 ```
 Start-Process "prometheus.exe" "--storage.tsdb.retention.time=31d" -WindowStyle Hidden
 ```
-If you ever want to stop the prometheus process, you can find it under the name prometheus.exe in the windows task manager (shortcut ctrl+alt+del), then you can end the task.
+To stop the prometheus process at any time, open the windows task manager and search for `prometheus.exe`, then end the task.
 
 
-## Grafana
-### Installation
-It’s now time to [download Grafana](https://grafana.com/grafana/download) and install it.
-After the installation, you can now open the web page http://localhost:3000. By default, the username and the password are both ‘admin’
+## Installing Grafana
 
-Create a data source and choose Prometheus, and enter in the URL field http://localhost:9090 then click on **Save & Test**. You should have a green notification on the corner upper right “Datasource updated”
+Grafana must now be installed to provide the graphical component of the data analytics.
 
-### Enable alerts
+1. [download Grafana](https://grafana.com/grafana/download) and install it.
 
-On the left menu of Grafana, select **Notification channels** under the bell icon. Click on **New channel**.
-You can now chose the channel you want to create to be alerted. You can find some of them explained below.
+2. Open http://localhost:3000 in a browser. By default, the username and the password to this panel are both ‘admin’.
 
-#### Telegram
- Select now the type **Telegram** and configure it how you would like the alerts to be done.
+3. Create a data source and choose Prometheus, then enter in the URL field http://localhost:9090. 
 
-To complete the **Telegram API settings** you will have to create a bot and a telegram channel. Follow this [guide](https://gist.github.com/ilap/cb6d512694c3e4f2427f85e4caec8ad7) to create it, **BUT** there is an error in it. At this step
-```
-Invite @BotFather to that channel as admin
-``` 
-you should invite your own bot that you just created instead.
-Use the **Send test** button to make sure that your bot is sending alerts to your telegram channel. Once it’s working, save it.
+4. click on **Save & Test**. 
 
-You can now create your own alert rules if needed, the guide above explain how.
+A green notification saying “Datasource updated” should now be visible on the upper right corner.
 
-#### Discord
-  Select **Discord** in the type drop down selection. To complete the set up we will need a Webhook URL from discord. 
+## Enabling mobile alerts
+
+1. On the left menu of Grafana, select **Notification channels** under the bell icon. 
+
+2. Click on **New channel**.
+
+### Option 1: Telegram
+
+1. Select Telegram from the list.
+
+2. To complete the **Telegram API settings**, a Telegram channel and bot are required. For instructions on setting up a bot with `@Botfather`, see [this section](https://core.telegram.org/bots#6-botfather) of the Telegram documentation.
+
+3. Once completed, invite the bot to the newly created channel.
+
+### Option 2: Discord
+
+1. Select **Discord** in the type drop down selection. 
+
+2. To complete the set up, a Discord server (and a text channel available) as well as a Webhook URL are required. For instructions on setting up a Discord's Webhooks, see [this section](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) of their documentation.
   
-  Head over to discord and create your own server and make a text channel for these alerts. Go to **Server Settings->Webhooks** and select **Create Webhook**. Add a name to your webhook and select the text channel you created for these alerts in the channel drop down selection. Copy the **Webhook URL** and click Save. Your new webhook should appear in the webhook settings page. Make sure you do not share this webhook url with anyone else!
-  
-  Now head back to the Grafana site where you selected discord as your notification type and paste the Webhook URL in the settings. Click on **Send Test** and you will recieve a test alert in your text channel on your discord server! Click **Save** to finish the set up.
-###### Thanks to Space for the Discord section
+3. Navigate back to http://localhost:3000 and enter the Webhook URL in the Discord notification settings panel. 
 
-### Creating/importing dashboards
-You can now create your own dashboard how you feel like to. Or you can also just import the Prysm dashboards:
-- [dashboard designed for small amount of validator keys](https://raw.githubusercontent.com/GuillaumeMiralles/prysm-grafana-dashboard/master/less_10_validators.json)
-- [dashboard designed for more than 10 validator keys](https://raw.githubusercontent.com/GuillaumeMiralles/prysm-grafana-dashboard/master/more_10_validators.json).
+4. Click **Send Test**, which will push a confirmation message to the Discord channel.
 
-It’s the json for a node/validator grafana dashboard made by myself. To import this json into your Grafana dashboard, you click on the **+** icon on the left menu and select Import, you then just have to paste the json and click **Load** button.
+## Creating and importing dashboards
 
+1. The dashboard can now be customised to the users preferences. There are two examples that can be used:
+- [dashboard designed for small amount of validator keys](/assets/grafana-dashboards/small_amount_validators.json)
+- [dashboard designed for more than 10 validator keys](/assets/grafana-dashboards/big_amount_validators.json)
 
+2. To import this json into the Grafana dashboard, click on the **+** icon on the left menu and select 'Import', 
 
+3. Paste the json and click the **Load** button.
+
+## Running nodes and validators on separate hardware
+
+For those running their node and validators on separate machines, simply modify the pasted `prometheus.yml` data from the earlier step and change any instances of `localhost` to the desired IP. For local networks, the _private IP_ is required. For connections over the internet, the _public facing IP_ will be required.
+
+* [Finding a **private IP**](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip/#private-ip-addresses)
+* [Finding a **public IP**](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip/#public-ip-addresses)
+
+> **NOTICE:** In case of public IPs, [port forwarding](https://github.com/wgknowles/documentation/blob/15da3fb1ea477f260ef287497fe047b0a78879b3/docs/prysm-usage/p2p-host-ip.md#port-forwarding) may need to be configured.
