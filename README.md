@@ -123,3 +123,7 @@ For those running their node and validators on separate machines, simply modify 
 * [Finding a **public IP**](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip/#public-ip-addresses)
 
 > **NOTICE:** In case of public IPs, [port forwarding](https://github.com/wgknowles/documentation/blob/15da3fb1ea477f260ef287497fe047b0a78879b3/docs/prysm-usage/p2p-host-ip.md#port-forwarding) may need to be configured.
+
+
+## Activate currency converter feature
+A specific [guide](https://github.com/GuillaumeMiralles/prysm-grafana-dashboard/blob/master/currency_converter.md) has been designed for it
