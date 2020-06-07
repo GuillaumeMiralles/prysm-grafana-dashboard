@@ -18,11 +18,11 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1590683834694,
+  "iteration": 1591524963899,
   "links": [],
   "panels": [
     {
-      "content": "\n## Presentation\n-----\nWelcome to my dashboard!\n\nEnsure to update your grafana to the version 7.0.1 or more. Previous version won't have everything working properly.\n\nIf you face any issue to understand a panel or to know what to do, make sure to read the small note on the corner top left of the panel if there is one!\n\n\n## Earning panels exceptions\n-----\nThe earning panels are supposing that you have done deposits of 32 ETH exactly. If you see some incoherence in this values it's probably because you have deposited more than 32 ETH.\nIf so, you can fix the total earning panel by adding at the end of the query the substraction of your excedend 32 ETH. For the others earning panels (hourly daily weekly monthly),\nit will be fixed by itself with time, but you can still fix it temporarily by doing the same job than on the total earning panel (then don't forget to remove your temporarily fix once it has been fixed automatically)\n\n##### Total earning fix\n-----\nIf you sent 32.5 ETH on each validator and you have 5 validators, the total earning query will look like\n```\nsum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32 - 0.5*5\n```\n\nTo edit a panel, left click on the panel title then chose edit, then ensure to save the dashboard !\n\n\n\n### Bug!\n-----\nIf you find a bug, please report it to me on discord, Ocaa/grums. I'm foundable on the prysm discord then dm me directly. I'll try to give a fix and update the dashboard !\nThanks for all the reports\n\n\n\n\n-----\nAfter reading it, you can now delete me. And don't forget to save the dashboard after deleting me! (button on the upper right) :)\n\nEnjoy\n\n\n\n",
+      "content": "\n## Presentation\n-----\nWelcome to my dashboard!\n\nEnsure to update your grafana to the version 7.0.1 or more. Previous version won't have everything working properly.\n\nIf you face any issue to understand a panel or to know what to do, make sure to read the small note on the corner top left of the panel if there is one!\n\n\n## Fiat converter\n-----\nThe currency converter allow you to see the earning for one of the currency in the dropdown list.\nThe value `All` equals to `ETH`. To have access to the currency converter, you can find how in this guide (TODO GUIDE)\n\n&nbsp;  \nYou can get the currencies you want, but the currency correctly displayed in the earning panels are:\n`BTC, CHF, CAD, EUR, USD, JPY, GBP`  \nIf you want to display correctly another currency that the one in the previous list, you can create a [git issue](https://github.com/GuillaumeMiralles/prysm-grafana-dashboard/issues) or you can DM me on discord (**Ocaa/grums** in prysm discord)\n\n## Earning panels exceptions\n-----\nThe earning panels are supposing that you have done deposits of 32 ETH exactly. If you see some incoherence in this values it's probably because you have deposited more than 32 ETH.\nIf so, you can fix the total earning panel by adding at the end of the query the substraction of your excedend 32 ETH. For the others earning panels (hourly daily weekly monthly),\nit will be fixed by itself with time, but you can still fix it temporarily by doing the same job than on the total earning panel (then don't forget to remove your temporarily fix once it has been fixed automatically)\n\n##### Total earning fix\n-----\nIf you sent 32.5 ETH on each validator and you have 5 validators, the total earning query will look like\n```\nsum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32 - 0.5*5\n```\n\nTo edit a panel, left click on the panel title then chose edit, then ensure to save the dashboard !\n\n\n## Support\n-----\nIf you enjoy the dashboard and you want to tip me for the work, you can send ETH and ERC20 token at this address **0xbDf75af14F356c381eC63329a4aB1C55D5c13fc5**\n\n\n\n## Bug\n-----\nIf you find a bug, please report it to me on discord, Ocaa/grums. I'm foundable on the prysm discord then dm me directly. I'll try to give a fix and update the dashboard !\nThanks for all the reports\n\n&nbsp;\n\nAfter reading it, you can now delete me. And don't forget to save the dashboard after deleting me! (button on the upper right) :)\n\nEnjoy\n\n\n\n",
       "datasource": null,
       "description": "To delete this panel: left click on the title, then chose remove",
       "fieldConfig": {
@@ -32,7 +32,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 20,
+        "h": 27,
         "w": 24,
         "x": 0,
         "y": 0
@@ -72,7 +72,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 27
       },
       "id": 42,
       "interval": null,
@@ -136,11 +136,11 @@
     },
     {
       "datasource": null,
-      "description": "This panel shows the number of ETH earned during the last hour, and the annualized % of the hourly earning.\n\nThose data won't be shown until the first validator is at least one hour old, or that you started prometheus at least one hour ago.\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
+      "description": "This panel shows the earning during the last hour, and the annualized % of the hourly earning.\n\nThose data won't be shown until the first validator is at least one hour old, or that you started prometheus at least one hour ago.\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "decimals": 4,
+          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -150,12 +150,12 @@
                 "value": null
               },
               {
-                "color": "yellow",
+                "color": "#EAB839",
                 "value": 0
               },
               {
                 "color": "#299c46",
-                "value": 0.0001
+                "value": 0.000001
               }
             ]
           }
@@ -177,7 +177,7 @@
                       "value": null
                     },
                     {
-                      "color": "yellow",
+                      "color": "#EAB839",
                       "value": 0
                     },
                     {
@@ -186,6 +186,114 @@
                     }
                   ]
                 }
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ETH"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 4
+              },
+              {
+                "id": "unit",
+                "value": " Ξ"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "btc"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              },
+              {
+                "id": "unit",
+                "value": "currencyBTC"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cad"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "C$"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "chf"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "CHf"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "eur"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyEUR"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gbp"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyGBP"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "jpy"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyJPY"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "usd"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyUSD"
               }
             ]
           }
@@ -195,15 +303,14 @@
         "h": 3,
         "w": 4,
         "x": 0,
-        "y": 21
+        "y": 28
       },
-      "id": 67,
-      "interval": "",
+      "id": 80,
       "options": {
         "colorMode": "background",
         "graphMode": "none",
         "justifyMode": "auto",
-        "orientation": "vertical",
+        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -214,18 +321,25 @@
       "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32)",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "ETH",
-          "refId": "B"
+          "refId": "A"
+        },
+        {
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32)*sum(crypto_currency{pair=\"eth$fiat\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "$fiat",
+          "refId": "C"
         },
         {
           "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32)/(avg_over_time(count(validator_balance > 16)[1h:30s])*32/24/365)*100",
           "instant": true,
           "interval": "",
           "legendFormat": "Annualized %",
-          "refId": "A"
+          "refId": "B"
         }
       ],
       "timeFrom": null,
@@ -235,11 +349,11 @@
     },
     {
       "datasource": null,
-      "description": "This panel shows the number of ETH earned during the last day, and the annualized % of the daily earning.\n\nThose data won't be shown until the first validator is at least one day old, or that you started prometheus at least one day ago.\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
+      "description": "This panel shows the earning during the last day, and the annualized % of the daily earning.\n\nThose data won't be shown until the first validator is at least one day old, or that you started prometheus at least one day ago.\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "decimals": 4,
+          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -249,12 +363,12 @@
                 "value": null
               },
               {
-                "color": "yellow",
+                "color": "#EAB839",
                 "value": 0
               },
               {
                 "color": "#299c46",
-                "value": 0.0001
+                "value": 0.000001
               }
             ]
           }
@@ -276,7 +390,7 @@
                       "value": null
                     },
                     {
-                      "color": "yellow",
+                      "color": "#EAB839",
                       "value": 0
                     },
                     {
@@ -285,6 +399,114 @@
                     }
                   ]
                 }
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ETH"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 4
+              },
+              {
+                "id": "unit",
+                "value": "Ξ"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "btc"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              },
+              {
+                "id": "unit",
+                "value": "currencyBTC"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cad"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "C$"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "chf"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "CHf"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "eur"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyEUR"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gbp"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyGBP"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "jpy"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyJPY"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "usd"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyUSD"
               }
             ]
           }
@@ -294,14 +516,14 @@
         "h": 3,
         "w": 4,
         "x": 4,
-        "y": 21
+        "y": 28
       },
-      "id": 73,
+      "id": 79,
       "options": {
         "colorMode": "background",
         "graphMode": "none",
         "justifyMode": "auto",
-        "orientation": "vertical",
+        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -312,11 +534,18 @@
       "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32)",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "ETH",
           "refId": "A"
+        },
+        {
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32)*sum(crypto_currency{pair=\"eth$fiat\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "$fiat",
+          "refId": "C"
         },
         {
           "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32)/(avg_over_time(count(validator_balance > 16)[1d:12m])*32/365)*100",
@@ -333,11 +562,11 @@
     },
     {
       "datasource": null,
-      "description": "This panel shows the number of ETH earned during the last week, and the annualized % of the weekly earning.\n\nThose data won't be shown until the first validator is at least one week old, or that you started prometheus at least one week ago.\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
+      "description": "This panel shows the earning during the last week, and the annualized % of the weekly earning.\n\nThose data won't be shown until the first validator is at least one week old, or that you started prometheus at least one week ago.\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "decimals": 4,
+          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -347,12 +576,12 @@
                 "value": null
               },
               {
-                "color": "yellow",
+                "color": "#EAB839",
                 "value": 0
               },
               {
                 "color": "#299c46",
-                "value": 0.0001
+                "value": 0.000001
               }
             ]
           }
@@ -374,7 +603,7 @@
                       "value": null
                     },
                     {
-                      "color": "yellow",
+                      "color": "#EAB839",
                       "value": 0
                     },
                     {
@@ -383,6 +612,114 @@
                     }
                   ]
                 }
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ETH"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 4
+              },
+              {
+                "id": "unit",
+                "value": "Ξ"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "btc"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              },
+              {
+                "id": "unit",
+                "value": "currencyBTC"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cad"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "C$"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "chf"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "CHf"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "eur"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyEUR"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gbp"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyGBP"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "jpy"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyJPY"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "usd"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyUSD"
               }
             ]
           }
@@ -392,14 +729,14 @@
         "h": 3,
         "w": 4,
         "x": 8,
-        "y": 21
+        "y": 28
       },
-      "id": 75,
+      "id": 78,
       "options": {
         "colorMode": "background",
         "graphMode": "none",
         "justifyMode": "auto",
-        "orientation": "vertical",
+        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -410,11 +747,18 @@
       "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32)",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "ETH",
           "refId": "A"
+        },
+        {
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32)*sum(crypto_currency{pair=\"eth$fiat\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "$fiat",
+          "refId": "C"
         },
         {
           "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32)/(avg_over_time(count(validator_balance > 16)[1w:84m])*32*7/365)*100",
@@ -431,11 +775,11 @@
     },
     {
       "datasource": null,
-      "description": "This panel shows the number of ETH earned during the last month, and the annualized % of the monthly earning.\n\nThose data won't be shown until the first validator is at least one month old, or that you started prometheus at least one month ago. Ensure to run Prometheus with the flag `--storage.tsdb.retention.time=31d` if you want this panel to get enough data\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
+      "description": "This panel shows the earning during the last month, and the annualized % of the monthly earning.\n\nThose data won't be shown until the first validator is at least one month old, or that you started prometheus at least one month ago. Ensure to run Prometheus with the flag `--storage.tsdb.retention.time=31d` if you want this panel to get enough data\n\nAlso, the annualized % might be wrong if you have downtime while new validators are getting validated",
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "decimals": 4,
+          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -450,25 +794,162 @@
               },
               {
                 "color": "#299c46",
-                "value": 0.0001
+                "value": 0.000001
               }
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Annualized %"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "#EAB839",
+                      "value": 0
+                    },
+                    {
+                      "color": "#299c46",
+                      "value": 5
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ETH"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 4
+              },
+              {
+                "id": "unit",
+                "value": "Ξ"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "btc"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              },
+              {
+                "id": "unit",
+                "value": "currencyBTC"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cad"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "C$"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "chf"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "CHf"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "eur"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyEUR"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gbp"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyGBP"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "jpy"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyJPY"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "usd"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyUSD"
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 3,
         "w": 4,
         "x": 12,
-        "y": 21
+        "y": 28
       },
       "id": 77,
       "options": {
         "colorMode": "background",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
-        "orientation": "vertical",
+        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -479,11 +960,18 @@
       "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32)",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "ETH",
           "refId": "A"
+        },
+        {
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32)*sum(crypto_currency{pair=\"eth$fiat\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "$fiat",
+          "refId": "C"
         },
         {
           "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32)/(avg_over_time(count(validator_balance > 16)[30d:6h])*32/12)*100",
@@ -503,7 +991,7 @@
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "decimals": 4,
+          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -518,25 +1006,154 @@
               },
               {
                 "color": "#299c46",
-                "value": 0.0001
+                "value": 0.000001
               }
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "btc"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 6
+              },
+              {
+                "id": "unit",
+                "value": "currencyBTC"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ETH"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 4
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ROI"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 4
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cad"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "C$"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ETH"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "Ξ"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "chf"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "CHf"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "eur"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyEUR"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gbp"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyGBP"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "jpy"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyJPY"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "usd"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyUSD"
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
+        "w": 5,
         "x": 16,
-        "y": 21
+        "y": 28
       },
       "id": 69,
       "options": {
         "colorMode": "background",
         "graphMode": "none",
         "justifyMode": "auto",
-        "orientation": "vertical",
+        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -547,23 +1164,30 @@
       "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "sum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32",
+          "expr": "sum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32*absent(crypto_currency{pair=~\"eth$fiat\"})",
           "instant": true,
           "interval": "",
-          "legendFormat": "Earning (ETH)",
+          "legendFormat": "ETH",
           "refId": "A"
+        },
+        {
+          "expr": "(sum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32)*sum(crypto_currency{pair=\"eth$fiat\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "$fiat",
+          "refId": "C"
         },
         {
           "expr": "(sum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32)*100/(count(validator_balance > 16 and validator_statuses == 3)*32)",
           "instant": true,
           "interval": "",
-          "legendFormat": "ROI (%)",
+          "legendFormat": "ROI",
           "refId": "B"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Total",
+      "title": "Total earning",
       "type": "stat"
     },
     {
@@ -598,9 +1222,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 20,
-        "y": 21
+        "w": 3,
+        "x": 21,
+        "y": 28
       },
       "id": 54,
       "links": [],
@@ -651,7 +1275,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 24
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 4,
@@ -751,7 +1375,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 24
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 2,
@@ -847,7 +1471,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 24
+        "y": 31
       },
       "id": 22,
       "pageSize": 100,
@@ -1002,7 +1626,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 29
+        "y": 36
       },
       "id": 20,
       "pageSize": null,
@@ -1254,7 +1878,7 @@
         "h": 1,
         "w": 8,
         "x": 0,
-        "y": 34
+        "y": 41
       },
       "id": 59,
       "interval": null,
@@ -1344,7 +1968,7 @@
         "h": 1,
         "w": 11,
         "x": 8,
-        "y": 34
+        "y": 41
       },
       "id": 30,
       "interval": null,
@@ -1435,7 +2059,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 34
+        "y": 41
       },
       "id": 41,
       "interval": null,
@@ -1523,7 +2147,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 35
+        "y": 42
       },
       "hiddenSeries": false,
       "id": 32,
@@ -1571,10 +2195,16 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "go_memstats_alloc_bytes",
+          "expr": "go_memstats_alloc_bytes{job=\"$node_job\"}",
           "interval": "",
           "legendFormat": "memory {{job}}",
           "refId": "A"
+        },
+        {
+          "expr": "go_memstats_alloc_bytes{job=\"$validator_job\"}",
+          "interval": "",
+          "legendFormat": "memory {{job}}",
+          "refId": "C"
         },
         {
           "expr": "(process_cpu_seconds_total - process_cpu_seconds_total offset 15s) > 0*100/15/go_maxprocs",
@@ -1659,7 +2289,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 35
+        "y": 42
       },
       "hiddenSeries": false,
       "hideTimeOverride": false,
@@ -1799,7 +2429,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 35
+        "y": 42
       },
       "id": 56,
       "links": [],
@@ -1845,7 +2475,7 @@
         "h": 10,
         "w": 5,
         "x": 19,
-        "y": 35
+        "y": 42
       },
       "id": 24,
       "limit": 10,
@@ -1892,7 +2522,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 37
+        "y": 44
       },
       "id": 26,
       "links": [],
@@ -1956,7 +2586,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 39
+        "y": 46
       },
       "id": 34,
       "links": [],
@@ -2033,7 +2663,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 41
+        "y": 48
       },
       "id": 40,
       "options": {
@@ -2128,7 +2758,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 45
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 61,
@@ -2277,7 +2907,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 46
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 28,
@@ -2419,7 +3049,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 47
+        "y": 54
       },
       "hiddenSeries": false,
       "id": 44,
@@ -2593,7 +3223,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 48
+        "y": 55
       },
       "hiddenSeries": false,
       "id": 48,
@@ -2761,7 +3391,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 49
+        "y": 56
       },
       "hiddenSeries": false,
       "id": 52,
@@ -2913,7 +3543,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 50
+        "y": 57
       },
       "hiddenSeries": false,
       "id": 50,
@@ -3062,7 +3692,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 51
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 65,
@@ -3155,7 +3785,7 @@
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "beacon node",
           "value": "beacon node"
         },
@@ -3175,7 +3805,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "validator",
           "value": "validator"
         },
@@ -3184,7 +3814,7 @@
         "name": "validator_job",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "validator",
             "value": "validator"
           }
@@ -3192,6 +3822,32 @@
         "query": "validator",
         "skipUrlSync": false,
         "type": "constant"
+      },
+      {
+        "allValue": "ETH",
+        "current": {
+          "selected": true,
+          "text": "eur",
+          "value": "eur"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(crypto_currency, pair)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Currency converter",
+        "multi": false,
+        "name": "fiat",
+        "options": [],
+        "query": "label_values(crypto_currency, pair)",
+        "refresh": 1,
+        "regex": "eth([a-z]*)",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -3215,5 +3871,5 @@
   "timezone": "",
   "title": "ETH staking dashboard",
   "uid": "t2yHaa3Zz",
-  "version": 65
+  "version": 87
 }
