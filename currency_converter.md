@@ -1,3 +1,5 @@
+Cryptowat is a third party tool that converts data from https://cryptowat.ch/ into prometheus metrics. This will enable the currency converter feature into the dashboard.
+
 ## Get Cryptowat
 To get the currency converter feature you will need to download and run a third party tool on [this repository](https://github.com/nbarrientos/cryptowat_exporter/tree/e4bcf6e16dd2e04c4edc699e795d9450dee486ab "cryptowat")
 
