@@ -1,6 +1,6 @@
 Grafana is an open-source data metrics tool that is used to aggregate large amounts of data into a comprehensive visual dashboard for easy analysis. This section includes instructions for installing Grafana on the local machine and configuring Telegram or Discord alerts for monitoring validator status on-the-go.
 
-![Grafana dashboard for prysm node and validator](https://camo.githubusercontent.com/d76a9bf4a104f69f4d4edd04c8d364cbb535e76c/68747470733a2f2f696d6775722e636f6d2f6e4b7a6b7234592e706e67.png "Grafana dashboard for prysm node and validator")
+![Grafana dashboard for prysm node and validator](https://camo.githubusercontent.com/d76a9bf4a104f69f4d4edd04c8d364cbb535e76c/68747470733a2f2f696d6775722e636f6d2f6e4b7a6b7234592e706e67 "Grafana dashboard for prysm node and validator")
 
 
 ### Getting account metrics
