@@ -108,8 +108,8 @@ A green notification saying “Datasource updated” should now be visible on th
 ## Creating and importing dashboards
 
 1. The dashboard can now be customised to the users preferences. There are two examples that can be used:
-- [dashboard designed for small amount of validator keys](/assets/grafana-dashboards/small_amount_validators.json)
-- [dashboard designed for more than 10 validator keys](/assets/grafana-dashboards/big_amount_validators.json)
+- [dashboard designed for small amount of validator keys](https://raw.githubusercontent.com/GuillaumeMiralles/prysm-grafana-dashboard/master/less_10_validators.json)
+- [dashboard designed for more than 10 validator keys](https://raw.githubusercontent.com/GuillaumeMiralles/prysm-grafana-dashboard/master/more_10_validators.json)
 
 2. To import this json into the Grafana dashboard, click on the **+** icon on the left menu and select 'Import', 
 
@@ -122,7 +122,7 @@ For those running their node and validators on separate machines, simply modify 
 * [Finding a **private IP**](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip/#private-ip-addresses)
 * [Finding a **public IP**](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip/#public-ip-addresses)
 
-> **NOTICE:** In case of public IPs, [port forwarding](https://github.com/wgknowles/documentation/blob/15da3fb1ea477f260ef287497fe047b0a78879b3/docs/prysm-usage/p2p-host-ip.md#port-forwarding) may need to be configured.
+> **NOTICE:** In case of public IPs, [port forwarding](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip/#port-forwarding) may need to be configured.
 
 
 ## Activate currency converter feature
