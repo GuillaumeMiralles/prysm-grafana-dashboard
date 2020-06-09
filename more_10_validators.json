@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 6,
-  "iteration": 1591608880420,
+  "iteration": 1591737175529,
   "links": [],
   "panels": [
     {
@@ -2195,19 +2195,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "go_memstats_alloc_bytes{job=\"$node_job\"}",
+          "expr": "avg_over_time(go_memstats_alloc_bytes{job=\"$node_job\"}[1m:5s])",
           "interval": "",
           "legendFormat": "memory {{job}}",
           "refId": "A"
         },
         {
-          "expr": "go_memstats_alloc_bytes{job=\"$validator_job\"}",
+          "expr": "avg_over_time(go_memstats_alloc_bytes{job=\"$validator_job\"}[1m:5s])",
           "interval": "",
           "legendFormat": "memory {{job}}",
           "refId": "C"
         },
         {
-          "expr": "(process_cpu_seconds_total - process_cpu_seconds_total offset 15s) > 0*100/15/go_maxprocs",
+          "expr": "((process_cpu_seconds_total - process_cpu_seconds_total offset 2m) > 0)*100/120/go_maxprocs",
           "interval": "",
           "legendFormat": "CPU {{job}}",
           "refId": "B"
@@ -3871,5 +3871,5 @@
   "timezone": "",
   "title": "ETH staking dashboard lot keys",
   "uid": "t2yHaa3Zz3",
-  "version": 22
+  "version": 24
 }
