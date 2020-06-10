@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 6,
-  "iteration": 1591737175529,
+  "iteration": 1591779522468,
   "links": [],
   "panels": [
     {
@@ -2787,13 +2787,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(time()-process_start_time_seconds)/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"beacon node\"})/3600",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
         },
         {
-          "expr": "",
+          "expr": "(time()-process_start_time_seconds{job=\"validator\"})/3600",
           "interval": "",
           "legendFormat": "",
           "refId": "B"
@@ -3871,5 +3871,5 @@
   "timezone": "",
   "title": "ETH staking dashboard lot keys",
   "uid": "t2yHaa3Zz3",
-  "version": 24
+  "version": 26
 }
