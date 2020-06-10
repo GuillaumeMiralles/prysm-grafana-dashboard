@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1591737120364,
+  "iteration": 1591737273337,
   "links": [],
   "panels": [
     {
@@ -32,7 +32,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 28,
+        "h": 27,
         "w": 24,
         "x": 0,
         "y": 0
@@ -72,7 +72,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 27
       },
       "id": 42,
       "interval": null,
@@ -303,7 +303,7 @@
         "h": 3,
         "w": 4,
         "x": 0,
-        "y": 29
+        "y": 28
       },
       "id": 80,
       "options": {
@@ -516,7 +516,7 @@
         "h": 3,
         "w": 4,
         "x": 4,
-        "y": 29
+        "y": 28
       },
       "id": 79,
       "options": {
@@ -729,7 +729,7 @@
         "h": 3,
         "w": 4,
         "x": 8,
-        "y": 29
+        "y": 28
       },
       "id": 78,
       "options": {
@@ -942,7 +942,7 @@
         "h": 3,
         "w": 4,
         "x": 12,
-        "y": 29
+        "y": 28
       },
       "id": 77,
       "options": {
@@ -1146,7 +1146,7 @@
         "h": 3,
         "w": 5,
         "x": 16,
-        "y": 29
+        "y": 28
       },
       "id": 69,
       "options": {
@@ -1224,7 +1224,7 @@
         "h": 3,
         "w": 3,
         "x": 21,
-        "y": 29
+        "y": 28
       },
       "id": 54,
       "links": [],
@@ -1275,7 +1275,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 32
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 4,
@@ -1375,7 +1375,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 32
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 2,
@@ -1471,7 +1471,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 32
+        "y": 31
       },
       "id": 22,
       "pageSize": 100,
@@ -1626,7 +1626,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 37
+        "y": 36
       },
       "id": 20,
       "pageSize": null,
@@ -1878,7 +1878,7 @@
         "h": 1,
         "w": 8,
         "x": 0,
-        "y": 42
+        "y": 41
       },
       "id": 59,
       "interval": null,
@@ -1968,7 +1968,7 @@
         "h": 1,
         "w": 11,
         "x": 8,
-        "y": 42
+        "y": 41
       },
       "id": 30,
       "interval": null,
@@ -2059,7 +2059,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 42
+        "y": 41
       },
       "id": 41,
       "interval": null,
@@ -2147,7 +2147,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 43
+        "y": 42
       },
       "hiddenSeries": false,
       "id": 32,
@@ -2289,7 +2289,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 43
+        "y": 42
       },
       "hiddenSeries": false,
       "hideTimeOverride": false,
@@ -2429,7 +2429,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 43
+        "y": 42
       },
       "id": 56,
       "links": [],
@@ -2475,7 +2475,7 @@
         "h": 10,
         "w": 5,
         "x": 19,
-        "y": 43
+        "y": 42
       },
       "id": 24,
       "limit": 10,
@@ -2522,7 +2522,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 45
+        "y": 44
       },
       "id": 26,
       "links": [],
@@ -2586,7 +2586,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 47
+        "y": 46
       },
       "id": 34,
       "links": [],
@@ -2663,7 +2663,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 49
+        "y": 48
       },
       "id": 40,
       "options": {
@@ -2758,7 +2758,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 53
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 61,
@@ -2787,13 +2787,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(time()-process_start_time_seconds)/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"beacon node\"})/3600",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
         },
         {
-          "expr": "",
+          "expr": "(time()-process_start_time_seconds{job=\"validator\"})/3600",
           "interval": "",
           "legendFormat": "",
           "refId": "B"
@@ -2907,7 +2907,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 54
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 28,
@@ -3049,7 +3049,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 55
+        "y": 54
       },
       "hiddenSeries": false,
       "id": 44,
@@ -3223,7 +3223,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 56
+        "y": 55
       },
       "hiddenSeries": false,
       "id": 48,
@@ -3391,7 +3391,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 57
+        "y": 56
       },
       "hiddenSeries": false,
       "id": 52,
@@ -3543,7 +3543,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 58
+        "y": 57
       },
       "hiddenSeries": false,
       "id": 50,
@@ -3692,7 +3692,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 59
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 65,
@@ -3871,5 +3871,5 @@
   "timezone": "",
   "title": "ETH staking dashboard",
   "uid": "t2yHaa3Zz",
-  "version": 92
+  "version": 93
 }
