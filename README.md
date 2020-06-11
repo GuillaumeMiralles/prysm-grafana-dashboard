@@ -119,10 +119,10 @@ A green notification saying “Datasource updated” should now be visible on th
 
 For those running their node and validators on separate machines, simply modify the pasted `prometheus.yml` data from the earlier step and change any instances of `localhost` to the desired IP. For local networks, the _private IP_ is required. For connections over the internet, the _public facing IP_ will be required.
 
-* [Finding a **private IP**](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip/#private-ip-addresses)
-* [Finding a **public IP**](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip/#public-ip-addresses)
+* [Finding a **private IP**](https://docs.prylabs.network/prysm-usage/p2p-host-ip/#private-ip-addresses)
+* [Finding a **public IP**](https://docs.prylabs.network/prysm-usage/p2p-host-ip/#public-ip-addresses)
 
-> **NOTICE:** In case of public IPs, [port forwarding](https://docs.prylabs.network/docs/prysm-usage/p2p-host-ip/#port-forwarding) may need to be configured.
+> **NOTICE:** In case of public IPs, [port forwarding](https://docs.prylabs.network/prysm-usage/p2p-host-ip/#port-forwarding) may need to be configured.
 
 
 ## Activate currency converter feature
