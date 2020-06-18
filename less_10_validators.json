@@ -18,11 +18,11 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1591864806111,
+  "iteration": 1592386883246,
   "links": [],
   "panels": [
     {
-      "content": "\n## Presentation\n-----\nWelcome to my dashboard!\n\nEnsure to update your grafana to the version 7.0.1 or more. Previous version won't have everything working properly.\n\nIf you face any issue to understand a panel or to know what to do, make sure to read the small note on the corner top left of the panel if there is one!\n\n\n## Fiat converter\n-----\nThe currency converter allow you to see the earning for one of the currency in the dropdown list.\nThe value `All` equals to `ETH`. To have access to the currency converter, you can find how in this [guide](https://docs.prylabs.network/docs/prysm-usage/monitoring/currency_converter/)\n\n&nbsp;  \nYou can get the currencies you want, but the currency correctly displayed in the earning panels are:\n`BTC, CHF, CAD, EUR, USD, JPY, GBP`  \nIf you want to display correctly another currency that the one in the previous list, you can create a [git issue](https://github.com/GuillaumeMiralles/prysm-grafana-dashboard/issues) or you can DM me on discord (**Ocaa/grums** in prysm discord)\n\n## Earning panels exceptions\n-----\nThe earning panels are supposing that you have done deposits of 32 ETH exactly. If you see some incoherence in this values it's probably because you have deposited more than 32 ETH.\nIf so, you can fix the total earning panel by adding at the end of the query the substraction of your excedend 32 ETH. For the others earning panels (hourly daily weekly monthly),\nit will be fixed by itself with time, but you can still fix it temporarily by doing the same job than on the total earning panel (then don't forget to remove your temporarily fix once it has been fixed automatically)\n\n##### Total earning fix\n-----\nIf you sent 32.5 ETH on each validator and you have 5 validators, the total earning query will look like\n```\nsum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32 - 0.5*5\n```\n\nTo edit a panel, left click on the panel title then chose edit, then ensure to save the dashboard !\n\n\n## Support\n-----\nIf you enjoy the dashboard and you want to tip me for the work, you can send ETH and ERC20 token at this address **0xbDf75af14F356c381eC63329a4aB1C55D5c13fc5**\n\n\n\n## Bug\n-----\nIf you find a bug, please report it to me. You can create a [git issue](https://github.com/GuillaumeMiralles/prysm-grafana-dashboard/issues) or you can DM me on discord (Ocaa/grums in prysm discord)\nThanks for all the reports\n\n&nbsp;\n\nAfter reading it, you can now delete me. And don't forget to save the dashboard after deleting me! (button on the upper right) :)\n\nEnjoy\n\n\n\n",
+      "content": "\n## Presentation\n-----\nWelcome to my dashboard!\n\nEnsure to update your grafana to the version 7.0.1 or more. Previous version won't have everything working properly.\n\nIf you face any issue to understand a panel or to know what to do, make sure to read the small note on the corner top left of the panel if there is one!\n\n\n## Fiat converter\n-----\nThe currency converter allow you to see the earning for one of the currency in the dropdown list.\nThe value `All` equals to `ETH`. To have access to the currency converter, you can find how in this [guide](https://docs.prylabs.network/docs/prysm-usage/monitoring/currency-converter/)\n\n&nbsp;  \nYou can get the currencies you want, but the currency correctly displayed in the earning panels are:\n`BTC, CHF, CAD, EUR, USD, JPY, GBP`  \nIf you want to display correctly another currency that the one in the previous list, you can create a [git issue](https://github.com/GuillaumeMiralles/prysm-grafana-dashboard/issues) or you can DM me on discord (**Ocaa/grums** in prysm discord)\n\n## Earning panels exceptions\n-----\nThe earning panels are supposing that you have done deposits of 32 ETH exactly. If you see some incoherence in this values it's probably because you have deposited more than 32 ETH.\nIf so, you can fix the total earning panel by adding at the end of the query the substraction of your excedend 32 ETH. For the others earning panels (hourly daily weekly monthly),\nit will be fixed by itself with time, but you can still fix it temporarily by doing the same job than on the total earning panel (then don't forget to remove your temporarily fix once it has been fixed automatically)\n\n##### Total earning fix\n-----\nIf you sent 32.5 ETH on each validator and you have 5 validators, the total earning query will look like\n```\nsum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32 - 0.5*5\n```\n\nTo edit a panel, left click on the panel title then chose edit, then ensure to save the dashboard !\n\n\n## Support\n-----\nIf you enjoy the dashboard and you want to tip me for the work, you can send ETH and ERC20 token at this address **0xbDf75af14F356c381eC63329a4aB1C55D5c13fc5**\n\n\n\n## Bug\n-----\nIf you find a bug, please report it to me. You can create a [git issue](https://github.com/GuillaumeMiralles/prysm-grafana-dashboard/issues) or you can DM me on discord (Ocaa/grums in prysm discord)\nThanks for all the reports\n\n&nbsp;\n\nAfter reading it, you can now delete me. And don't forget to save the dashboard after deleting me! (button on the upper right) :)\n\nEnjoy\n\n\n\n",
       "datasource": "Prometheus",
       "description": "To delete this panel: left click on the title, then chose remove",
       "fieldConfig": {
@@ -32,7 +32,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 27,
+        "h": 28,
         "w": 24,
         "x": 0,
         "y": 0
@@ -72,7 +72,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 28
       },
       "id": 42,
       "interval": null,
@@ -303,7 +303,7 @@
         "h": 3,
         "w": 4,
         "x": 0,
-        "y": 28
+        "y": 29
       },
       "id": 80,
       "options": {
@@ -516,7 +516,7 @@
         "h": 3,
         "w": 4,
         "x": 4,
-        "y": 28
+        "y": 29
       },
       "id": 79,
       "options": {
@@ -729,7 +729,7 @@
         "h": 3,
         "w": 4,
         "x": 8,
-        "y": 28
+        "y": 29
       },
       "id": 78,
       "options": {
@@ -942,7 +942,7 @@
         "h": 3,
         "w": 4,
         "x": 12,
-        "y": 28
+        "y": 29
       },
       "id": 77,
       "options": {
@@ -1146,7 +1146,7 @@
         "h": 3,
         "w": 5,
         "x": 16,
-        "y": 28
+        "y": 29
       },
       "id": 69,
       "options": {
@@ -1224,7 +1224,7 @@
         "h": 3,
         "w": 3,
         "x": 21,
-        "y": 28
+        "y": 29
       },
       "id": 54,
       "links": [],
@@ -1275,7 +1275,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 31
+        "y": 32
       },
       "hiddenSeries": false,
       "id": 4,
@@ -1375,7 +1375,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 31
+        "y": 32
       },
       "hiddenSeries": false,
       "id": 2,
@@ -1471,7 +1471,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 31
+        "y": 32
       },
       "id": 22,
       "pageSize": 100,
@@ -1626,7 +1626,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 36
+        "y": 37
       },
       "id": 20,
       "pageSize": null,
@@ -1878,7 +1878,7 @@
         "h": 1,
         "w": 8,
         "x": 0,
-        "y": 41
+        "y": 42
       },
       "id": 59,
       "interval": null,
@@ -1968,7 +1968,7 @@
         "h": 1,
         "w": 11,
         "x": 8,
-        "y": 41
+        "y": 42
       },
       "id": 30,
       "interval": null,
@@ -2059,7 +2059,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 41
+        "y": 42
       },
       "id": 41,
       "interval": null,
@@ -2150,7 +2150,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 42
+        "y": 43
       },
       "hiddenSeries": false,
       "id": 32,
@@ -2292,7 +2292,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 42
+        "y": 43
       },
       "hiddenSeries": false,
       "hideTimeOverride": false,
@@ -2432,7 +2432,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 42
+        "y": 43
       },
       "id": 56,
       "links": [],
@@ -2478,7 +2478,7 @@
         "h": 10,
         "w": 5,
         "x": 19,
-        "y": 42
+        "y": 43
       },
       "id": 24,
       "limit": 10,
@@ -2525,7 +2525,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 44
+        "y": 45
       },
       "id": 26,
       "links": [],
@@ -2589,7 +2589,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 46
+        "y": 47
       },
       "id": 34,
       "links": [],
@@ -2666,7 +2666,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 48
+        "y": 49
       },
       "id": 40,
       "options": {
@@ -2761,7 +2761,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 52
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 61,
@@ -2910,7 +2910,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 53
+        "y": 54
       },
       "hiddenSeries": false,
       "id": 28,
@@ -3052,7 +3052,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 54
+        "y": 55
       },
       "hiddenSeries": false,
       "id": 44,
@@ -3226,7 +3226,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 55
+        "y": 56
       },
       "hiddenSeries": false,
       "id": 48,
@@ -3394,7 +3394,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 56
+        "y": 57
       },
       "hiddenSeries": false,
       "id": 52,
@@ -3546,7 +3546,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 57
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 50,
@@ -3695,7 +3695,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 58
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 65,
@@ -3829,9 +3829,9 @@
       {
         "allValue": "ETH",
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": "usd",
+          "value": "usd"
         },
         "datasource": "Prometheus",
         "definition": "label_values(crypto_currency, pair)",
@@ -3874,5 +3874,5 @@
   "timezone": "",
   "title": "ETH staking dashboard",
   "uid": "t2yHaa3Zz",
-  "version": 99
+  "version": 102
 }
