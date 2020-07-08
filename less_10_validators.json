@@ -2198,13 +2198,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg_over_time(go_memstats_alloc_bytes{job=\"$node_job\"}[1m:5s])",
+          "expr": "avg_over_time(process_resident_memory_bytes{job=\"$node_job\"}[1m:5s])",
           "interval": "",
           "legendFormat": "memory {{job}}",
           "refId": "A"
         },
         {
-          "expr": "avg_over_time(go_memstats_alloc_bytes{job=\"$validator_job\"}[1m:5s])",
+          "expr": "avg_over_time(process_resident_memory_bytes{job=\"$validator_job\"}[1m:5s])",
           "interval": "",
           "legendFormat": "memory {{job}}",
           "refId": "C"
