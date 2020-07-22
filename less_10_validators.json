@@ -2995,32 +2995,55 @@
       }
     },
     {
-      "alert": {
+    "alert": {
         "alertRuleTags": {},
         "conditions": [
-          {
+            {
             "evaluator": {
-              "params": [
+                "params": [
                 0.9
-              ],
-              "type": "lt"
+                ],
+                "type": "lt"
             },
             "operator": {
-              "type": "and"
+                "type": "and"
             },
             "query": {
-              "params": [
+                "params": [
                 "A",
                 "5m",
                 "now"
-              ]
+                ]
             },
             "reducer": {
-              "params": [],
-              "type": "avg"
+                "params": [],
+                "type": "avg"
             },
             "type": "query"
-          }
+            },
+            {
+            "evaluator": {
+                "params": [
+                0.9
+                ],
+                "type": "lt"
+            },
+            "operator": {
+                "type": "or"
+            },
+            "query": {
+                "params": [
+                "B",
+                "5m",
+                "now"
+                ]
+            },
+            "reducer": {
+                "params": [],
+                "type": "avg"
+            },
+            "type": "query"
+            }
         ],
         "executionErrorState": "alerting",
         "for": "5m",
