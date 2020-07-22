@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 6,
-  "iteration": 1592465762718,
+  "iteration": 1595413079172,
   "links": [],
   "panels": [
     {
@@ -3017,6 +3017,29 @@
               "type": "avg"
             },
             "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                0.9
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "B",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
           }
         ],
         "executionErrorState": "alerting",
@@ -3871,5 +3894,5 @@
   "timezone": "",
   "title": "ETH staking dashboard lot keys",
   "uid": "t2yHaa3Zz3",
-  "version": 30
+  "version": 32
 }
