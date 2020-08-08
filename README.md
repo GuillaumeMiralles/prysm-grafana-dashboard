@@ -42,6 +42,9 @@ scrape_configs:
   - job_name: 'beacon node'
     static_configs:
       - targets: ['localhost:8080']
+  - job_name: 'slasher'
+    static_configs:
+      - targets: ['localhost:8082']
 ```
 
 4. In the same directory, double-click the **prometheus** file (with extension `.exe` in Windows) to start Prometheus,
