@@ -1928,7 +1928,7 @@
       "thresholds": "0,0",
       "timeFrom": null,
       "timeShift": null,
-      "title": "BOTH",
+      "title": "Change title's section from BOTH to HARDWARE USAGE",
       "type": "singlestat",
       "valueFontSize": "20%",
       "valueMaps": [
