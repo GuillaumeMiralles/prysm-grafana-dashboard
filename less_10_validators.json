@@ -1943,7 +1943,7 @@
         "thresholds": "0,0",
         "timeFrom": null,
         "timeShift": null,
-        "title": "BOTH",
+        "title": "HARDWARE USAGE",
         "type": "singlestat",
         "valueFontSize": "20%",
         "valueMaps": [
@@ -3923,7 +3923,7 @@
       ]
     },
     "time": {
-      "from": "now-5m",
+      "from": "now-6h",
       "to": "now"
     },
     "timepicker": {
