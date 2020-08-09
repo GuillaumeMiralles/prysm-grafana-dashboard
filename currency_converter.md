@@ -79,6 +79,9 @@ scrape_configs:
   - job_name: 'beacon node'
     static_configs:
       - targets: ['localhost:8080']
+  - job_name: 'slasher'
+    static_configs:
+      - targets: ['localhost:8082']
 ```
 
 2. Restart **prometheus** to reload the new version of the yml file.
