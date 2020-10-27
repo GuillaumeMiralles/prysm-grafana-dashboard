@@ -17,8 +17,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 6,
-  "iteration": 1596884910245,
+  "id": 21,
+  "iteration": 1603806591070,
   "links": [],
   "panels": [
     {
@@ -2352,7 +2352,7 @@
           "refId": "C"
         },
         {
-          "expr": "total_voted_target_balances/total_eligible_balances*100",
+          "expr": "beacon_prev_epoch_target_gwei/beacon_prev_epoch_active_gwei*100",
           "instant": false,
           "interval": "",
           "legendFormat": "Participation rate",
@@ -3750,7 +3750,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "total_voted_target_balances/total_eligible_balances*100",
+          "expr": "beacon_prev_epoch_target_gwei/beacon_prev_epoch_active_gwei*100",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -3898,7 +3898,7 @@
     ]
   },
   "timezone": "",
-  "title": "ETH staking dashboard lot keys",
-  "uid": "t2yHaa3Zz3",
-  "version": 34
+  "title": "ETH staking dashboard lot keys git",
+  "uid": "t2yHaa3Zz3lot",
+  "version": 2
 }
