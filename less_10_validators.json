@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1603795476129,
+  "iteration": 1603898575427,
   "links": [],
   "panels": [
     {
@@ -1244,18 +1244,12 @@
       "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "(time()-process_start_time_seconds{instance=\"$validator_launchpad\", job=\"$validator_job\"})/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"$validator_job\"})/3600",
           "hide": false,
           "instant": true,
           "interval": "",
           "legendFormat": "launchpad",
           "refId": "A"
-        },
-        {
-          "expr": "(time()-process_start_time_seconds{instance=\"$validator_ethdo\", job=\"$validator_job\"})/3600",
-          "interval": "",
-          "legendFormat": "ethdo",
-          "refId": "B"
         }
       ],
       "timeFrom": null,
@@ -3961,5 +3955,5 @@
   "timezone": "",
   "title": "ETH staking dashboard",
   "uid": "t2yHaa3Zz",
-  "version": 115
+  "version": 116
 }
