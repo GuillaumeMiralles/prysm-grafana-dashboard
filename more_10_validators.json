@@ -17,33 +17,10 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 21,
-  "iteration": 1603806591070,
+  "id": 6,
+  "iteration": 1604723812789,
   "links": [],
   "panels": [
-    {
-      "content": "\n## Presentation\n-----\nWelcome to my dashboard!\n\nEnsure to update your grafana to the version 7.0.1 or more. Previous version won't have everything working properly.\n\nIf you face any issue to understand a panel or to know what to do, make sure to read the small note on the corner top left of the panel if there is one!\n\n\n## Fiat converter\n-----\nThe currency converter allow you to see the earning for one of the currency in the dropdown list.\nThe value `All` equals to `ETH`. To have access to the currency converter, you can find how in this [guide](https://docs.prylabs.network/docs/prysm-usage/monitoring/currency-converter/)\n\n&nbsp;  \nYou can get the currencies you want, but the currency correctly displayed in the earning panels are:\n`BTC, CHF, CAD, EUR, USD, JPY, GBP`  \nIf you want to display correctly another currency that the one in the previous list, you can create a [git issue](https://github.com/GuillaumeMiralles/prysm-grafana-dashboard/issues) or you can DM me on discord (**Ocaa/grums** in prysm discord)\n\n## Earning panels exceptions\n-----\nThe earning panels are supposing that you have done deposits of 32 ETH exactly. If you see some incoherence in this values it's probably because you have deposited more than 32 ETH.\nIf so, you can fix the total earning panel by adding at the end of the query the substraction of your excedend 32 ETH. For the others earning panels (hourly daily weekly monthly),\nit will be fixed by itself with time, but you can still fix it temporarily by doing the same job than on the total earning panel (then don't forget to remove your temporarily fix once it has been fixed automatically)\n\n##### Total earning fix\n-----\nIf you sent 32.5 ETH on each validator and you have 5 validators, the total earning query will look like\n```\nsum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32 - 0.5*5\n```\n\nTo edit a panel, left click on the panel title then chose edit, then ensure to save the dashboard !\n\n\n## Support\n-----\nIf you enjoy the dashboard and you want to tip me for the work, you can send ETH and ERC20 token at this address **0xbDf75af14F356c381eC63329a4aB1C55D5c13fc5**\n\n\n\n## Bug\n-----\nIf you find a bug, please report it to me on discord, Ocaa/grums. I'm foundable on the prysm discord then dm me directly. I'll try to give a fix and update the dashboard !\nThanks for all the reports\n\n&nbsp;\n\nAfter reading it, you can now delete me. And don't forget to save the dashboard after deleting me! (button on the upper right) :)\n\nEnjoy\n\n\n\n",
-      "datasource": "Prometheus",
-      "description": "To delete this panel: left click on the title, then chose remove",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 27,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 63,
-      "mode": "markdown",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "README",
-      "type": "text"
-    },
     {
       "cacheTimeout": null,
       "colorBackground": true,
@@ -72,7 +49,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 0
       },
       "id": 42,
       "interval": null,
@@ -303,7 +280,7 @@
         "h": 3,
         "w": 4,
         "x": 0,
-        "y": 28
+        "y": 1
       },
       "id": 80,
       "options": {
@@ -315,10 +292,12 @@
           "calcs": [
             "mean"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.3.1",
       "targets": [
         {
           "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
@@ -516,7 +495,7 @@
         "h": 3,
         "w": 4,
         "x": 4,
-        "y": 28
+        "y": 1
       },
       "id": 79,
       "options": {
@@ -528,10 +507,12 @@
           "calcs": [
             "mean"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.3.1",
       "targets": [
         {
           "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
@@ -729,7 +710,7 @@
         "h": 3,
         "w": 4,
         "x": 8,
-        "y": 28
+        "y": 1
       },
       "id": 78,
       "options": {
@@ -741,10 +722,12 @@
           "calcs": [
             "mean"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.3.1",
       "targets": [
         {
           "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
@@ -942,7 +925,7 @@
         "h": 3,
         "w": 4,
         "x": 12,
-        "y": 28
+        "y": 1
       },
       "id": 77,
       "options": {
@@ -954,10 +937,12 @@
           "calcs": [
             "mean"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.3.1",
       "targets": [
         {
           "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
@@ -1146,7 +1131,7 @@
         "h": 3,
         "w": 5,
         "x": 16,
-        "y": 28
+        "y": 1
       },
       "id": 69,
       "options": {
@@ -1158,10 +1143,12 @@
           "calcs": [
             "mean"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.3.1",
       "targets": [
         {
           "expr": "sum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32*absent(crypto_currency{pair=~\"eth$fiat\"})",
@@ -1224,7 +1211,7 @@
         "h": 3,
         "w": 3,
         "x": 21,
-        "y": 28
+        "y": 1
       },
       "id": 54,
       "links": [],
@@ -1237,10 +1224,12 @@
           "calcs": [
             "lastNotNull"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.3.1",
       "targets": [
         {
           "expr": "(time()-process_start_time_seconds{job=\"$validator_job\"})/3600",
@@ -1265,7 +1254,8 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -1275,7 +1265,7 @@
         "h": 10,
         "w": 10,
         "x": 0,
-        "y": 31
+        "y": 4
       },
       "hiddenSeries": false,
       "id": 4,
@@ -1292,9 +1282,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1367,7 +1358,7 @@
         "h": 20,
         "w": 6,
         "x": 10,
-        "y": 31
+        "y": 4
       },
       "id": 22,
       "pageSize": 100,
@@ -1522,7 +1513,7 @@
         "h": 20,
         "w": 8,
         "x": 16,
-        "y": 31
+        "y": 4
       },
       "id": 20,
       "pageSize": null,
@@ -1759,7 +1750,8 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -1769,7 +1761,7 @@
         "h": 10,
         "w": 10,
         "x": 0,
-        "y": 41
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 2,
@@ -1786,9 +1778,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1878,7 +1871,7 @@
         "h": 1,
         "w": 8,
         "x": 0,
-        "y": 51
+        "y": 24
       },
       "id": 59,
       "interval": null,
@@ -1916,7 +1909,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "NODE",
+      "tableColumn": "",
       "targets": [
         {
           "expr": "1",
@@ -1968,7 +1961,7 @@
         "h": 1,
         "w": 11,
         "x": 8,
-        "y": 51
+        "y": 24
       },
       "id": 30,
       "interval": null,
@@ -2006,7 +1999,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "NODE",
+      "tableColumn": "",
       "targets": [
         {
           "expr": "1",
@@ -2059,7 +2052,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 51
+        "y": 24
       },
       "id": 41,
       "interval": null,
@@ -2137,7 +2130,8 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -2147,7 +2141,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 52
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 32,
@@ -2168,10 +2162,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": true,
-      "pluginVersion": "6.7.3",
+      "pluginVersion": "7.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2285,7 +2279,8 @@
       "description": "This graph is made for trading purpose mostly.\nSupposing that if a lot of validators are exiting, price is gonna dump.\n\nAlso this can prevent to exit while exiting queue is too long, same for depositing while pending queue is too long.\n\n",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -2295,7 +2290,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 52
+        "y": 25
       },
       "hiddenSeries": false,
       "hideTimeOverride": false,
@@ -2315,9 +2310,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2435,7 +2431,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 52
+        "y": 25
       },
       "id": 56,
       "links": [],
@@ -2448,10 +2444,12 @@
           "calcs": [
             "lastNotNull"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.3.1",
       "targets": [
         {
           "expr": "(time()-process_start_time_seconds{job=\"$node_job\"})/3600",
@@ -2481,7 +2479,7 @@
         "h": 10,
         "w": 5,
         "x": 19,
-        "y": 52
+        "y": 25
       },
       "id": 24,
       "limit": 10,
@@ -2528,7 +2526,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 54
+        "y": 27
       },
       "id": 26,
       "links": [],
@@ -2541,10 +2539,12 @@
           "calcs": [
             "lastNotNull"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.3.1",
       "targets": [
         {
           "expr": "beacon_clock_time_slot-beacon_head_slot",
@@ -2592,7 +2592,7 @@
         "h": 2,
         "w": 3,
         "x": 16,
-        "y": 56
+        "y": 29
       },
       "id": 34,
       "links": [],
@@ -2605,10 +2605,12 @@
           "calcs": [
             "lastNotNull"
           ],
+          "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.3.1",
       "targets": [
         {
           "expr": "p2p_peer_count{state=\"Connected\"}",
@@ -2669,7 +2671,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 58
+        "y": 31
       },
       "id": 40,
       "options": {
@@ -2679,11 +2681,12 @@
           "calcs": [
             "last"
           ],
+          "fields": "",
           "values": false
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.3.1",
       "targets": [
         {
           "expr": "sum(delta(log_entries_total{job=\"$node_job\", level=\"error\"}[1h]) > 0)",
@@ -2754,7 +2757,8 @@
       "description": "This alert is useful only for people who has automatic restart of the process after crash. \nThis can be made for example by using the prysm.bat file on windows with \"set PRYSM_AUTORESTART=true&\", or with docker with \"--restart always\"",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -2764,7 +2768,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 62
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 61,
@@ -2781,9 +2785,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2903,7 +2908,8 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -2913,7 +2919,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 63
+        "y": 36
       },
       "hiddenSeries": false,
       "id": 28,
@@ -2930,9 +2936,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3068,7 +3075,8 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -3078,7 +3086,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 64
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 44,
@@ -3096,9 +3104,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3242,7 +3251,8 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -3252,7 +3262,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 65
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 48,
@@ -3270,9 +3280,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3410,7 +3421,8 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -3420,7 +3432,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 66
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 52,
@@ -3437,10 +3449,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "6.7.2",
+      "pluginVersion": "7.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3562,7 +3574,8 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -3572,7 +3585,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 67
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 50,
@@ -3589,9 +3602,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3711,7 +3725,8 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -3721,7 +3736,7 @@
         "h": 1,
         "w": 5,
         "x": 19,
-        "y": 68
+        "y": 41
       },
       "hiddenSeries": false,
       "id": 65,
@@ -3738,9 +3753,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3807,7 +3823,7 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 25,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -3818,6 +3834,7 @@
           "text": "beacon node",
           "value": "beacon node"
         },
+        "error": null,
         "hide": 2,
         "label": null,
         "name": "node_job",
@@ -3838,6 +3855,7 @@
           "text": "validator",
           "value": "validator"
         },
+        "error": null,
         "hide": 2,
         "label": null,
         "name": "validator_job",
@@ -3861,6 +3879,7 @@
         },
         "datasource": "Prometheus",
         "definition": "label_values(crypto_currency, pair)",
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Currency converter",
@@ -3898,7 +3917,7 @@
     ]
   },
   "timezone": "",
-  "title": "ETH staking dashboard lot keys",
-  "uid": "t2yHaa3Zz3lot",
+  "title": "prysm-grafana-dash-more10",
+  "uid": "c0fb9232-20b2-11eb-9912-3bb2c2dd6ffc",
   "version": 2
 }
