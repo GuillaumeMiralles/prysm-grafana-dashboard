@@ -18,7 +18,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 21,
-  "iteration": 1603806591070,
+  "iteration": 1605638084225,
   "links": [],
   "panels": [
     {
@@ -3029,7 +3029,7 @@
               "params": [
                 0.9
               ],
-              "type": "gt"
+              "type": "lt"
             },
             "operator": {
               "type": "or"
@@ -3900,5 +3900,5 @@
   "timezone": "",
   "title": "ETH staking dashboard lot keys",
   "uid": "t2yHaa3Zz3lot",
-  "version": 2
+  "version": 3
 }
