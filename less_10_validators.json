@@ -2130,6 +2130,7 @@
         "CPU validator": "purple",
         "CPU validator localhost:8079": "orange",
         "CPU validator localhost:8081": "green",
+        "CPU slasher": "cyan",        
         "beacon node": "rgb(68, 218, 252)",
         "memory beacon node": "rgb(96, 252, 255)",
         "memory validator": "rgb(255, 255, 160)",
@@ -2203,7 +2204,14 @@
           "linewidth": 1,
           "nullPointMode": "null as zero",
           "yaxis": 2
-        }
+        },
+        {
+          "alias": "CPU slasher",
+          "fill": 0,
+          "linewidth": 1,
+          "nullPointMode": "null as zero",
+          "yaxis": 2
+        }        
       ],
       "spaceLength": 10,
       "stack": false,
@@ -2222,6 +2230,12 @@
           "refId": "C"
         },
         {
+          "expr": "avg_over_time(process_resident_memory_bytes{job=\"$slasher_job\"}[1m:5s])",
+          "interval": "",
+          "legendFormat": "memory {{job}}",
+          "refId": "E"
+        },		        
+        {
           "expr": "((process_cpu_seconds_total{job=\"$node_job\"} - process_cpu_seconds_total{job=\"$node_job\"} offset 2m) > 0)*100/120/go_maxprocs{job=\"$node_job\"}",
           "interval": "",
           "legendFormat": "CPU {{job}}",
@@ -2232,7 +2246,13 @@
           "interval": "",
           "legendFormat": "CPU {{job}} {{instance}}",
           "refId": "D"
-        }
+        },
+        {
+          "expr": "((process_cpu_seconds_total{job=\"$slasher_job\"} - process_cpu_seconds_total{job=\"$slasher_job\"} offset 2m) > 0)*100/120/go_maxprocs{job=\"$slasher_job\"}",
+          "interval": "",
+          "legendFormat": "CPU {{job}}",
+          "refId": "F"
+        }		        
       ],
       "thresholds": [
         {
@@ -3867,6 +3887,26 @@
         "skipUrlSync": false,
         "type": "constant"
       },
+      {
+        "current": {
+          "selected": true,
+          "text": "slasher",
+          "value": "slasher"
+        },
+        "hide": 2,
+        "label": null,
+        "name": "slasher_job",
+        "options": [
+          {
+            "selected": true,
+            "text": "slasher",
+            "value": "slasher"
+          }
+        ],
+        "query": "slasher",
+        "skipUrlSync": false,
+        "type": "constant"
+      },	        
       {
         "allValue": "ETH",
         "current": {
